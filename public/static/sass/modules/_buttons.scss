@@ -1,0 +1,44 @@
+.btn {
+    @include border-radius(3px);
+    color: $white-light;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+
+    &:hover {
+        color: $white-light;
+    }
+}
+
+.btn-ir {
+    display: block;
+    text-indent: -999em;
+}
+
+.btn-plain {
+    border: none;
+}
+
+.btn-white {
+    background: $white-light;
+    color: $red;
+}
+
+.btn-red {
+    background: $red;
+}
+
+.btn-black {
+    background: $black;
+}
+
+.btn-grey {
+    background: $grey-dark;
+}
+
+.btn-orange {
+    background: $orange-light;
+}

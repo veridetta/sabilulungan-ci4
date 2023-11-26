@@ -1,0 +1,37 @@
+html{
+	margin:0;
+	padding:0
+}
+body{
+	color:#000;
+	font:12px Verdana, Geneva, sans-serif;
+	line-height:1.5;
+	margin:0;
+	padding:5px;
+	background-color:#FFF
+}
+p{
+	margin:5px 0
+}
+.ke-flash{
+	width:100px;
+	height:100px;
+	border:1px solid #AAA;
+	background:url(../i/editor-flash.gif) center center no-repeat
+}
+.ke-rm{
+	width:100px;
+	height:100px;
+	border:1px solid #AAA;
+	background-image:url(../i/editor-rm.gif) center center no-repeat
+}
+.ke-media{
+	width:100px;
+	height:100px;
+	border:1px solid #AAA;
+	background-image:url(../i/editor-media.gif) center center no-repeat
+}
+.ke-content{
+	font:13px Arial, Helvetica, sans-serif;
+	line-height:1.7
+}

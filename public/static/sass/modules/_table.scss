@@ -1,0 +1,37 @@
+.table-global {
+    margin-bottom: 20px;
+
+    th,
+    td {
+        line-height: 1.5;
+        padding: $table-cell-padding;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    thead {
+        th {
+            background: $table-thead-background;
+            border: 1px solid $table-border;
+            color: $white-light;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+
+        .has-sub {
+            text-align: center;
+        }
+    }
+
+    td,
+    tfoot th {
+        border: 1px solid $table-border;
+        font-size: 12px;
+    }
+
+    tfoot {
+        th {
+            font-size: 14px;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+@mixin transition($arg...){
+	-webkit-transition: $arg;
+	-moz-transition: $arg;
+	-ms-transition: $arg;
+	-o-transition: $arg;
+	transition: $arg;
+}

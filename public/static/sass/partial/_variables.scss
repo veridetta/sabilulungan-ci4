@@ -1,0 +1,60 @@
+/* Typography
+------------------------------------------------------------------------------*/
+
+$base-font-size   	: 16px;
+$base-line-height 	: 1.6em;
+
+$base-font-family   : 'helvetica neue', 'helvetica', sans-serif;
+
+/* Colors
+------------------------------------------------------------------------------*/
+
+$black 	 			: #000;
+$black90 			: lighten($black, 10%);
+$black80 			: lighten($black, 20%);
+$black70 			: lighten($black, 30%);
+$black60 			: lighten($black, 40%);
+$black50 			: lighten($black, 50%);
+$black40 			: lighten($black, 60%);
+$black30 			: lighten($black, 70%);
+$black20 			: lighten($black, 80%);
+$black10 			: lighten($black, 90%);
+$white-light 	    : #fff;
+$white-dark         : #f6f7f7;
+$red 	 			: #ff1c1c;
+$green-light        : #8AC77B;
+$green-dark         : #00923f;
+$blue               : #0093bb;
+$purple             : #6d236f;
+$grey-light         : #ccc;
+$grey-dark          : #8b8b8b;
+$orange-light       : #ff6600;
+$orange-dark        : #ec7404;
+
+$blue-dark    		: #428bca;
+$blue-light 		: #0093bb;
+
+
+$link 				: $blue-dark;
+$link-hover 		: lighten($link, 10%);
+
+$selection-bg 	 	: #b3d4fc;
+$selection-color 	: $black;
+
+
+/* Table
+------------------------------------------------------------------------------*/
+
+$table-border 				: $grey-light;
+$table-thead-background 	: $black;
+
+$table-cell-padding 		: 10px;
+
+
+
+
+
+
+
+
+

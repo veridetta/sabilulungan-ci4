@@ -1,0 +1,4 @@
+@mixin background-size($arg){
+	-webkit-background-size: $arg;
+	background-size: $arg;
+}

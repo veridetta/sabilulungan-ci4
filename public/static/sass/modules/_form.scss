@@ -1,0 +1,123 @@
+.form-global {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        border: 1px solid $grey-light;
+        height: 29px;
+        padding: 5px;
+        width: 100%;
+    }
+
+    .error {
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            border: 1px solid $red;
+        }
+
+        .error-list {
+            margin-bottom: 10px;
+        }
+
+        .error-text {
+            color: $red;
+            font-size: 12px;
+            margin: 5px 0 0;
+        }
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    .file {
+        margin-bottom: 5px;
+    }
+
+    .control-group {
+        margin-bottom: 10px;
+    }
+
+    .control-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .control-label-inline {
+        display: inline-block;
+    }
+
+    .radio, .checkbox {
+        cursor: pointer;
+        display: block;
+        font-size: 14px;
+        line-height: 1.5em;
+        min-height: 20px;
+        padding-left: 20px;
+    }
+
+    .radio-inline,
+    .checkbox-inline {
+        display: inline-block;
+        margin-right: 50px;
+    }
+
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+        float: left;
+        margin: 4px 0 0 -18px;
+        width: auto;
+    }
+
+    .info,
+    .link {
+        color: $blue;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .link {
+        text-decoration: underline;
+    }
+
+    .control-actions {
+        margin-top: 20px;
+    }
+
+    .control-actions-border {
+        border-top: 1px solid $grey-light;
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+
+    .btn {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .col-wrapper {
+        border-top: 1px solid $grey-light;
+        margin: 20px 0;
+        padding-top: 10px;
+
+        .col {
+            float: left;
+            margin-right: 30px;
+            width: 301px;
+        }
+    }
+}
