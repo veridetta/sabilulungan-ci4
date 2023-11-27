@@ -10,7 +10,9 @@
     <title>Sabilulungan - Bansos dan hibah online</title>
     <link rel="icon" type="image/png" href="<?php echo base_url('static/img/favicon.png') ?>">
     <link rel="stylesheet" href="<?php echo base_url('static/css/main.css') ?>">
+    <?= $this->renderSection('page-css'); ?>
     <style type="text/css">
+        .nav-main a {font-size: 13px !important;}
         .fb_hidden{position:absolute;top:-10000px;z-index:10001}
         .fb_invisible{display:none}
         .fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
@@ -112,8 +114,8 @@
 
     <script>var HOST = "<?php echo base_url() ?>";</script>    
     <script type="text/javascript">var base_urls = "<?php echo base_url() ?>", site_urls = "<?php echo site_url() ?>";</script>    
-
     <script src="<?php echo base_url('static/js/vendor/modernizr-2.6.2.min.js') ?>"></script>
+    <?= $this->renderSection('page-js'); ?>
 </head>
 
 <body class="home">

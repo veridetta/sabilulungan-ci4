@@ -25,7 +25,7 @@
     <div class="widget-side nav-filter">
         <h2><a href="<?php echo site_url('cms/log'); ?>">Log Pengguna</a></h2>
     </div>
-</aside>
+    </aside>
 <!-- sidebar -->
 
 <?php

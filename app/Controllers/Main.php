@@ -74,4 +74,24 @@ class Main extends Controller {
 	{
 		return view('content/statistik',['db' => $this->db,'p'=>$p,'dx'=>$dx, 'ifunction' => $this->ifunction]);							
 	}
+	public function infografis(){
+		//total proposaltahun ini
+		$totalProposal = $this->db->table('proposal')
+			->where('YEAR(time_entry)', date('Y'))
+			->countAllResults();
+		$proposalData = $this->db->table('proposal')
+				->join('proposal_approval', 'proposal.id = proposal_approval.proposal_id')
+				->where('proposal_approval.flow_id >', 3)
+				->select('proposal.judul, proposal.id,proposal.name')
+				->get()
+				->getResult();
+		$proposalDataTahunIni = $this->db->table('proposal')
+					->join('proposal_approval', 'proposal.id = proposal_approval.proposal_id')
+					->where('proposal_approval.flow_id >', 6)
+					->where('YEAR(proposal.time_entry)', date('Y'))
+					->select('proposal.judul, proposal.id,proposal.name')
+					->get()
+					->getResult();
+		return view('content/dashboard',['db' => $this->db, 'ifunction' => $this->ifunction, 'totalProposal' => $totalProposal, 'proposalData' => $proposalData, 'proposalDataTahunIni' => $proposalDataTahunIni]);	 
+	}
 }

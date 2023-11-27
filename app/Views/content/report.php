@@ -89,12 +89,12 @@
                 <th>Hasil Evaluasi</th>
                 <th>Pertimbangan TAPD</th>
                 <th>Pemeriksaan TU</th>
-                <th>Pemeriksaan Walikota</th>
+                <th>Pemeriksaan Bupati</th>
                 <th>Pemeriksaan Tim Pertimbangan</th>
                 <th>Pemeriksaan SKPD</th>
                 <th>Verifikasi Tim Pertimbangan</th>
                 <th>Verifikasi TAPD</th>
-                <th>Penyetujuan Walikota</th>
+                <th>Penyetujuan Bupati</th>
                 <th>NPHD</th>
                 <th>LPJ</th>
             </tr>
@@ -285,20 +285,36 @@
                         <td>'; if(isset($besar[1]->value)) echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; else echo '-'; echo '</td>';
 
                         if($list->current_stat==0 && $_SESSION['sabilulungan']['role']==5 || $list->current_stat==0 && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==0 && $_SESSION['sabilulungan']['role']==9){
-                            echo '<td style="text-align:center"><a href="'.site_url('tatausaha/periksa/'.$list->id).'">PROSES</a></td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
+                            $approvalExists = $db->table('proposal_approval')
+                                        ->where('flow_id', $list->current_stat+1)
+                                        ->where('action', 2)
+                                        ->countAllResults();
+
+                                    if($approvalExists) {
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('tatausaha/periksa/'.$list->id).'">DITOLAK</a></td>';
+                                    } else {
+                                        echo '<td style="text-align:center"><a href="'.site_url('tatausaha/periksa/'.$list->id).'">PROSES</a></td>';
+                                    }
+                            $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
+
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; 
+                                    
+                                    if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; 
+                                    
+                                    else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
@@ -317,19 +333,31 @@
                                     echo '<td style="text-align:center">'.$status.'</td>';
                                 }
                             }
-                            echo '<td style="text-align:center"><a href="'.site_url('walikota/periksa/'.$list->id).'">PROSES</a></td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
+                            $approvalExists = $db->table('proposal_approval')
+                                        ->where('flow_id', $list->current_stat+1)
+                                        ->where('action', 2)
+                                        ->countAllResults();
+
+                                    if($approvalExists) {
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('walikota/periksa/'.$list->id).'">DITOLAK</a></td>';
+                                    } else {
+                                        echo '<td style="text-align:center"><a href="'.site_url('walikota/periksa/'.$list->id).'">PROSES</a></td>';
+                                    }
+                            
+                            $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
+
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
@@ -349,17 +377,28 @@
                                     echo '<td style="text-align:center">'.$status.'</td>';
                                 }
                             }
-                            echo '<td style="text-align:center"><a href="'.site_url('pertimbangan/periksa/'.$list->id).'">PROSES</a></td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
+                            $approvalExists = $db->table('proposal_approval')
+                                        ->where('flow_id', $list->current_stat+1)
+                                        ->where('action', 2)
+                                        ->countAllResults();
+
+                                    if($approvalExists) {
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('pertimbangan/periksa/'.$list->id).'">DITOLAK</a></td>';
+                                    } else {
+                                        echo '<td style="text-align:center"><a href="'.site_url('pertimbangan/periksa/'.$list->id).'">PROSES</a></td>';
+                                    }
+                            $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
+
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
                                     echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                     echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
                                 }
                             }
@@ -381,17 +420,29 @@
                                     echo '<td style="text-align:center">'.$status.'</td>';
                                 }
                             }
-                            echo '<td style="text-align:center"><a href="'.site_url('skpd/periksa/'.$list->id).'">PROSES</a></td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
-                            echo '<td style="text-align:center">PROSES</td>';
+                            $approvalExists = $db->table('proposal_approval')
+                                        ->where('flow_id', $list->current_stat+1)
+                                        ->where('action', 2)
+                                        ->countAllResults();
+
+                                    if($approvalExists) {
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('skpd/periksa/'.$list->id).'">DITOLAK</a></td>';
+                                    } else {
+                                        echo '<td style="text-align:center"><a href="'.site_url('skpd/periksa/'.$list->id).'">PROSES</a></td>';
+                                    }
+                            
+                            $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
+
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
+                            echo '<td style="text-align:center">'.$status.'</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
@@ -413,16 +464,25 @@
                                     echo '<td style="text-align:center">'.$status.'</td>';
                                 }
                             }
-                            echo '<td style="text-align:center"><a href="'.site_url('pertimbangan/verifikasi/'.$list->id).'">PROSES</a></td>';
+                            $approvalExists = $db->table('proposal_approval')
+                                        ->where('flow_id', $list->current_stat+1)
+                                        ->where('action', 2)
+                                        ->countAllResults();
+
+                                    if($approvalExists) {
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('pertimbangan/verifikasi/'.$list->id).'">DITOLAK</a></td>';
+                                    } else {
+                                        echo '<td style="text-align:center"><a href="'.site_url('pertimbangan/verifikasi/'.$list->id).'">PROSES</a></td>';
+                                    }
                             echo '<td style="text-align:center">PROSES</td>';
                             echo '<td style="text-align:center">PROSES</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
@@ -445,15 +505,25 @@
                                     echo '<td style="text-align:center">'.$status.'</td>';
                                 }
                             }
-                            echo '<td style="text-align:center"><a href="'.site_url('tapd/verifikasi/'.$list->id).'">PROSES</a></td>';
+                            $approvalExists = $db->table('proposal_approval')
+                                        ->where('flow_id', $list->current_stat+1)
+                                        ->where('action', 2)
+                                        ->countAllResults();
+
+                                    if($approvalExists) {
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('tapd/verifikasi/'.$list->id).'">DITOLAK</a></td>';
+                                    } else {
+                                        echo '<td style="text-align:center"><a href="'.site_url('tapd/verifikasi/'.$list->id).'">PROSES</a></td>';
+                                    }
+                            
                             echo '<td style="text-align:center">PROSES</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
@@ -477,14 +547,27 @@
                                     echo '<td style="text-align:center">'.$status.'</td>';
                                 }
                             }
+                            $approvalExists = $db->table('proposal_approval')
+                            ->where('flow_id', $list->current_stat+1)
+                            ->where('action', 2)
+                            ->countAllResults();
+
+                        if($approvalExists) {
+                            echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('walikota/setuju/'.$list->id).'">DITOLAK</a></td>';
+                        } else {
                             echo '<td style="text-align:center"><a href="'.site_url('walikota/setuju/'.$list->id).'">PROSES</a></td>';
+                        }
+                        $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
+                            
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else 
+                                    echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) 
+                                    echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }else{
-                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
-                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
+                                    echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">'.$status.'</a>'; echo '</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
@@ -506,11 +589,11 @@
                                 foreach($Qstat->getResult() as $stat){
                                     if($stat->action==1) $status = '<a style="color:#00923f;cursor:text">DISETUJUI</a>'; elseif($stat->action==2) $status = '<a style="color:#F00;cursor:text">DITOLAK</a>';
 
-                                    echo '<td style="text-align:center">'.$status.'</td>';
+                                    echo '<td style="text-align:center">EDIT</td>';
                                 }
                             }
                             if($_SESSION['sabilulungan']['role']==9){
-                                echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';
+                                echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">EDIT</a>'; echo '</td>';
                                 echo '<td style="text-align:center">'; if(isset($list->tanggal_lpj)) echo '<a href="'.site_url('admin/view/'.$list->id).'">EDIT</a>'; else echo '<a href="'.site_url('admin/lpj/'.$list->id).'">PROSES</a>'; echo '</td>';
                             }else{
                                 echo '<td style="text-align:center">'; if(isset($list->nphd)) echo '<a style="color:#00923f;cursor:text">SELESAI</a>'; else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">PROSES</a>'; echo '</td>';

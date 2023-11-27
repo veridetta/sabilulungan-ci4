@@ -404,8 +404,12 @@ class Process extends Controller {
 					
 					return redirect()->back();
 				}
-
-				$db->table('proposal')->update(['current_stat' => 1], ['id' => $dx]);
+				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				if($status == 2){
+					$db->table('proposal')->update(['current_stat' => 0], ['id' => $dx]);
+				}else{
+					$db->table('proposal')->update(['current_stat' => 1], ['id' => $dx]);
+				}
 				$db->table('proposal')->update(['type_id' => $kategori], ['id' => $dx]);
 
 				foreach($kelengkapan as $index => $value) {
@@ -419,7 +423,6 @@ class Process extends Controller {
 
 				$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 13, 'value' => $this->request->getPost('keterangan')]);
 
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
 
 				$Qcheck = $db->table('proposal_approval')->select("user_id")->where('proposal_id', $dx)->where('flow_id', 1)->get();
 				if($Qcheck->getResult()) $db->table('proposal_approval')->update(['user_id' => $user_id, 'action' => $status], ['proposal_id' => $dx, 'flow_id' => 1]);
@@ -492,13 +495,16 @@ class Process extends Controller {
 			$role_id = $this->request->getPost('role_id');
 
 			if($user_id && $role_id){
-				$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);
+				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				if($status == 2){
+					$db->table('proposal')->update(['current_stat' => 1], ['id' => $dx]);
+				}else{
+					$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);
+				}
 
 				if($this->request->getPost('keterangan') != '') {
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 14, 'value' => $this->request->getPost('keterangan')]);
 				}
-
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
 
 				$Qcheck = $db->table('proposal_approval')->select("user_id")->where('proposal_id', $dx)->where('flow_id', 2)->get();
 				if($Qcheck->getResult()) {
@@ -613,14 +619,18 @@ class Process extends Controller {
 			
 
 			if($user_id && $role_id){
-				$db->table('proposal')->update(['current_stat' => 3], ['id' => $dx]);
+				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				if($status == 2){
+					$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);
+				}else{
+					$db->table('proposal')->update(['current_stat' => 3], ['id' => $dx]);
+				}
 
 				if($this->request->getPost('skpd')){
 					$db->table('proposal')->update(['skpd_id' => $this->request->getPost('skpd')], ['id' => $dx]);
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 31, 'value' => $this->request->getPost('skpd')]);
 				}
 
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
 
 				$Qcheck = $db->table('proposal_approval')->select("user_id")->where('proposal_id', $dx)->where('flow_id', 3)->get();
 				if($Qcheck->getResult()) {
@@ -751,8 +761,12 @@ class Process extends Controller {
 
 					return redirect()->back();
 				}
-
-				$db->table('proposal')->update(['current_stat' => 4], ['id' => $dx]);
+				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				if($status == 2){
+					$db->table('proposal')->update(['current_stat' => 3], ['id' => $dx]);
+				}else{
+					$db->table('proposal')->update(['current_stat' => 4], ['id' => $dx]);
+				}
 
 				if($this->request->getPost('beri')){
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => $this->request->getPost('beri')]);
@@ -771,7 +785,6 @@ class Process extends Controller {
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 25, 'value' => $this->request->getPost('keterangan')]);
 				}
 
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
 
 				$Qcheck = $db->table('proposal_approval')->select("user_id")->where('proposal_id', $dx)->where('flow_id', 4)->get();
 				if($Qcheck->getResult()) {
@@ -855,7 +868,12 @@ class Process extends Controller {
 				$role_id = $this->request->getPost('role_id');
 
 			if($user_id && $role_id){
-				$db->table('proposal')->update(['current_stat' => 6], ['id' => $dx]);
+				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				if($status == 2){
+					$db->table('proposal')->update(['current_stat' => 5], ['id' => $dx]);
+				}else{
+					$db->table('proposal')->update(['current_stat' => 6], ['id' => $dx]);
+				}
 
 				if($this->request->getPost('rekomendasi')){
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 28, 'value' => $this->request->getPost('rekomendasi')]);
@@ -865,7 +883,6 @@ class Process extends Controller {
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 29, 'value' => $this->request->getPost('keterangan')]);
 				}
 
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : null);
 
 				$Qcheck = $db->table('proposal_approval')->where('proposal_id', $dx)->where('flow_id', 6)->get()->getResult();
 
@@ -1356,7 +1373,7 @@ class Process extends Controller {
 					$data = [
 						'name' => $name, 
 						'username' => $uname, 
-						'password' => password_hash($pswd, PASSWORD_DEFAULT), 
+						'password' => $this->ifunction->pswd($pswd), 
 						'role_id' => $role, 
 						'is_active' => $status
 					];
@@ -1404,7 +1421,7 @@ class Process extends Controller {
 						$data = [
 							'name' => $name, 
 							'username' => $uname, 
-							'password' => password_hash($pswd, PASSWORD_DEFAULT), 
+							'password' => $this->ifunction->pswd($pswd), 
 							'role_id' => $role, 
 							'is_active' => $status
 						];
@@ -1500,7 +1517,7 @@ class Process extends Controller {
 						'phone' => $phone, 
 						'ktp' => $ktp, 
 						'username' => $uname, 
-						'password' => password_hash($pswd, PASSWORD_DEFAULT), 
+						'password' => $this->ifunction->pswd($pswd), 
 						'role_id' => 6, 
 						'is_active' => $status
 					]);
@@ -1549,7 +1566,7 @@ class Process extends Controller {
 			if($uname && $name && $address && $phone && $ktp && $email){
 				if($pswd != '' || $repswd != ''){
 					if($pswd == $repswd){
-						$data['password'] = password_hash($pswd, PASSWORD_DEFAULT);
+						$data['password'] = $this->ifunction->pswd($pswd);
 						$db->table('user')->update($data, ['id' => $dx]);
 
 						$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'edit_umum', 'id' => $dx, 'ip' => $request->getIPAddress()]);

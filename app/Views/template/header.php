@@ -8,6 +8,9 @@
         <nav role="navigation" class="nav-main">
             <ul class="clearfix list-nostyle">
                 <li>
+                    <a class="link-green" href="<?= site_url('infografis') ?>">Dashboard</a>
+                </li>
+                <li>
                     <a class="link-green" href="<?= site_url('tentang') ?>">Tentang</a>
                 </li>
                 <li>
@@ -24,6 +27,7 @@
                     elseif($_SESSION['sabilulungan']['role']==7) echo '<li><a class="link-purple" href="'.site_url('hibah').'">Daftar Hibah</a></li><li><a class="link-purple" href="'.site_url('report').'">Pemeriksaan</a></li> ';
                     elseif($_SESSION['sabilulungan']['role']==8) echo '<li><a class="link-purple" href="'.site_url('input').'">Mendaftar Hibah Masuk</a></li> ';
                     elseif($_SESSION['sabilulungan']['role']==9) echo '<li><a class="link-purple" href="'.site_url('report').'">Koreksi</a></li><li><a class="link-purple" href="'.site_url('cms').'">CMS</a></li><li><a class="link-purple" href="'.site_url('realisasi').'">Laporan</a></li> ';
+                    elseif($_SESSION['sabilulungan']['role']==10) echo '<li><a class="link-purple" href="'.site_url('organisasi').'">Organisasi</a></li>';
                 }else echo '
                     <li>
                         <a class="link-purple" href="'.site_url('peraturan').'">Peraturan</a>

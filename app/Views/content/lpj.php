@@ -144,7 +144,7 @@ $detail = $Qdetail->getResult();
                     <label class="control-label" for="">Laporan Pertanggung Jawaban (Gambar)</label>
                     <div class="controls file">
                         <input type="file" name="foto[]">
-                        <input type="text" name="deskripsi[]" placeholder="Deskripsi">
+                        <input type="text" name="deskripsi[]" accept="image/*" placeholder="Deskripsi">
                     </div>
                     <a class="lpj" href="#">Tambah Laporan</a>
                 </div>

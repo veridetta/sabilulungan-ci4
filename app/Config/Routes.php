@@ -5,6 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('/infografis', 'Main::infografis');
 $routes->get('/', 'Main::index');
 $routes->get('/tentang', 'Main::tentang');
 $routes->get('proposal/(:num)/(:num)/(:num)/(:num)/(:num)/(:num)', 'Main::proposal/$1/$2/$3/$4/$5/$6');
@@ -164,6 +165,14 @@ $routes->get('/form', 'HasLogin::form');
 $routes->get('/form/(:any)', 'HasLogin::form/$1');
 $routes->get('/form/(:any)/(:any)', 'HasLogin::form/$1/$2');
 
+$routes->get('/organisasi', 'Kesbangpol::organisasi');
+$routes->post('/organisasi', 'Kesbangpol::organisasi');
+$routes->get('/add_organisasi', 'Kesbangpol::add_organisasi');
+$routes->get('/edit_organisasi/(:any)', 'Kesbangpol::edit_organisasi/$1');
+$routes->get('/delete_organisasi/(:any)', 'Kesbangpol::delete_organisasi/$1');
+$routes->post('/proses_organisasi','Kesbangpol::proses_organisasi');
+$routes->post('/proses_edit_organisasi','Kesbangpol::proses_edit_organisasi');
+$routes->post('/organisasi/ajaxList', 'Kesbangpol::ajaxList');
 
 $routes->get('/pdf', 'Pdf::pdf');
 $routes->get('/pdf/(:any)', 'Pdf::pdf/$1');
@@ -183,6 +192,8 @@ $routes->get('/generate_dnc/(:any)', 'Pdf::generate_dnc/$1');
 $routes->get('/generate_dnc/(:any)/(:any)', 'Pdf::generate_dnc/$1/$2');
 $routes->get('/generate_dnc/(:any)/(:any)/(:any)', 'Pdf::generate_dnc/$1/$2/$3');
 $routes->get('/generate_dnc/(:any)/(:any)/(:any)/(:any)', 'Pdf::generate_dnc/$1/$2/$3/$4');
+
+$routes->get('/generate', 'Pdf::generate');
 
 
 

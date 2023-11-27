@@ -35,26 +35,31 @@ class Auth extends Controller {
                 if($uname && $ifpsd){
                     $db = \Config\Database::connect();
                     $builder = $db->table('user');
-                    $builder->select("id, name, role_id, skpd_id");
+                    $builder->select("id, name, role_id, skpd_id, is_active");
                     $builder->where("username", $uname);
                     $builder->where("password", $this->ifunction->pswd($ifpsd));
-                    $builder->where("is_active", 1);
                     $Qcheck = $builder->get();
 
                     if($Qcheck->getNumRows()){
                         $check = $Qcheck->getResult();
+                        if($check[0]->is_active == 1){
+                            
+                            $session->set('sabilulungan', [
+                                'uid' => $check[0]->id,
+                                'name' => $check[0]->name,
+                                'role' => $check[0]->role_id,
+                                'skpd' => $check[0]->skpd_id,
+                                'base_url' => base_url()
+                            ]);
 
-                        $session->set('sabilulungan', [
-                            'uid' => $check[0]->id,
-                            'name' => $check[0]->name,
-                            'role' => $check[0]->role_id,
-                            'skpd' => $check[0]->skpd_id,
-                            'base_url' => base_url()
-                        ]);
+                            $db->table('log')->insert(['user_id' => $check[0]->id, 'activity' => 'login', 'ip' => $this->request->getIPAddress()]);
 
-                        $db->table('log')->insert(['user_id' => $check[0]->id, 'activity' => 'login', 'ip' => $this->request->getIPAddress()]);
+                            return redirect()->to(base_url());
+                        }else{
+                            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Akun Anda belum aktif. Silahkan hubungi administrator.']);
 
-                        return redirect()->to(base_url());
+                            return redirect()->back();
+                        }
                     }else{
                         $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Username dan password Anda tidak sesuai.']);
 
@@ -88,7 +93,8 @@ class Auth extends Controller {
                             'ktp' => $ktp,
                             'username' => $uname,
                             'password' => $this->ifunction->pswd($pswd),
-                            'role_id' => 6
+                            'role_id' => 6,
+                            'is_active'=> 0
                         ]);
 
                         $dx = $db->insertID();

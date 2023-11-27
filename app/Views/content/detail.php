@@ -625,7 +625,7 @@
                     </li>
                 </ul>
                 <?php
-                $Qlist = $db->query("SELECT a.id, a.judul, a.name, a.address, a.latar_belakang, a.maksud_tujuan, a.file, a.nphd, a.tanggal_lpj, a.time_entry, b.name AS tahap
+                $Qlist = $db->query("SELECT a.id, a.current_stat, a.judul, a.name, a.address, a.latar_belakang, a.maksud_tujuan, a.file, a.nphd, a.tanggal_lpj, a.time_entry, b.name AS tahap
                                         FROM proposal a
                                         LEFT JOIN flow b ON b.id=a.current_stat
                                         WHERE a.id='$dx'"); $list = $Qlist->getResult();
@@ -685,19 +685,17 @@
                             <?php } ?>
                             <p>
                                 Tahap: <?php
-                                        if(isset($list[0]->tahap)) echo $list[0]->tahap; else echo 'Proyek Terdaftar';
-
-                                        // if(isset($tahap[0]->flow_id)){
-                                        //     switch ($tahap[0]->flow_id) {
-                                        //         case '1': echo 'Proses Seleksi'; break;
-                                        //         case '2': echo 'Proses Seleksi'; break;
-                                        //         case '3': echo 'Proses Seleksi'; break;
-                                        //         case '4': echo 'Proses Seleksi'; break;
-                                        //         case '5': echo 'Proyek Disetujui'; break;
-                                        //         case '6': echo 'Proyek Disetujui'; break;
-                                        //         case '7': echo 'Proyek Berjalan'; break;
-                                        //     }
-                                        // }else echo 'Proyek Terdaftar';
+                                    $approvalExists = $db->table('proposal_approval')
+                                        ->join('flow', 'flow.id = proposal_approval.flow_id')
+                                        ->where('proposal_approval.flow_id', $list[0]->current_stat+1)
+                                        ->where('proposal_approval.action', 2)
+                                        ->get()
+                                        ->getResult();
+                                        if(count($approvalExists)) {
+                                            echo $approvalExists[0]->name." (Ditolak)";
+                                        } else {
+                                            if(isset($list[0]->tahap)) echo $list[0]->tahap; else echo 'Proyek Terdaftar';
+                                        }
                                         ?>                              
                             </p>
                             

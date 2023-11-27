@@ -18,6 +18,7 @@ case 'periksa':
 
         <form action="<?php echo site_url('process/tatausaha/periksa/'.$dx) ?>" method="post" class="form-check form-global">
             <h1 class="page-title page-title-border">Detail Pengecekan Dokumen</h1>
+            <p><a href="<?= base_url('organisasi');?>" target="_blank">Lihat data organisasi legal disini.</a></p>
             <ul class="category-list list-nostyle">
                 <li>
                     <h3 style="color:#ec7404">Kategori</h3>

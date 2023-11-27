@@ -23,7 +23,6 @@ class Pdf extends Controller {
     }
     public function pdf($t, $tp, $d, $dx, $papers='portrait')
 	{
-        // Create a new DOMPDF instance
         $dompdf = new Dompdf();
 		if($t == 'export'){
             ini_set('memory_limit', '-1');
@@ -78,9 +77,7 @@ class Pdf extends Controller {
                             $arr = explode(',',$opts['t']);
                             $types = array();
                             foreach ($arr as $type) $types[ trim($type) ] = 1;
-                            // There's no equivalent for $_DOMPDF_DEBUG_TYPES in the new version of DOMPDF
                         }
-
                         $save_file = true;
 				break;
 				
@@ -88,25 +85,12 @@ class Pdf extends Controller {
                     helper('url');
                     $session = \Config\Services::session();
                     $request = \Config\Services::request();
-
-                    if($d==1) $file = rawurldecode(site_url('report_hibah/'.$dx));
-                    elseif($d==2) $file = rawurldecode(site_url('report_bansos/'.$dx));
-
-                    $paper = 'default'; // Update this with your desired default paper size
+                    if($d==1) $file = view('content/pdf/report_hibah',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]);
+                    elseif($d==2) $file = view('content/pdf/report_bansos',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]);
+                    $paper = 'default'; 
                     $orientation = $papers;
-
-                    $file_parts = parse_url($file);
-
-                    if(($file_parts['scheme'] == '' || $file_parts['scheme'] === 'file')){
-                        $file = realpath($file);
-                        // DOMPDF_CHROOT does not exist in the latest version of DOMPDF
-                        // if(strpos($file, DOMPDF_CHROOT) !== 0) throw new \Dompdf\Exception("Permission denied on $file.");
-                    }
-
                     $outfile = $tp.'.pdf';
-
                     $save_file = false;
-
                     $this->db->table('log')->insert([
                         'user_id' => $session->get('sabilulungan')['uid'], 
                         'activity' => 'report', 
@@ -115,54 +99,48 @@ class Pdf extends Controller {
                     ]);
 				break;
 			}
-
-                    if($file === "-"){
-                        $str = "";
-                        while( !feof(STDIN)) $str .= fread(STDIN, 4096);
-                        $dompdf->loadHtml($str);
-                    }else{
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, $file);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                        $output = curl_exec($ch);
-                        curl_close($ch);
-
-                        $dompdf->loadHtml($output);
-                    }
-
+                    $dompdf->loadHtml($file);
                     if(isset($base_path)) $dompdf->setBasePath($base_path);
-
                     $dompdf->setPaper($paper, $orientation);
                     $dompdf->render();
-
-                    if(isset($opts["v"])){
-                        global $_dompdf_warnings;
-                        foreach ($_dompdf_warnings as $msg) echo $msg . "\n";
-                        echo $dompdf->getCanvas()->get_cpdf()->messages;
-                        flush();
-                    }
 
                     if($save_file){
                         $outfile = str_replace(".pdf", ".png", $outfile);
                         $file_parts = parse_url($outfile);
                         if($file_parts['scheme'] <> "") $outfile = $file_parts['path'];
                         $outfile = realpath(dirname($outfile)) . DIRECTORY_SEPARATOR . basename($outfile);
-                        
                         file_put_contents($outfile, $dompdf->output( array("compress" => 0)));
                         exit(0);
                     }
 
-                    if(!headers_sent()) $dompdf->stream($outfile, $options);
+                $dompdf->stream($outfile, $options);
 			
 		}
 		else{
             helper('url');
             $response = \Config\Services::response();
-
             if($d==1) $response->redirect(site_url('report_hibah/'.$dx));
             elseif($d==2) $response->redirect(site_url('report_bansos/'.$dx));			
 		}
 	}
+    public function generate(){
+        $filename = date('y-m-d-H-i-s'). '-qadr-labs-report';
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        // load HTML content
+        $dompdf->loadHtml(view('content/pdf/report_hibah',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]));
+
+        // (optional) setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // render html as PDF
+        $dompdf->render();
+
+        // output the generated pdf
+        $dompdf->stream($filename);
+    }
     public function report_hibah($tp)
 	{
 		?>
