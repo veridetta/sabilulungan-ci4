@@ -1,0 +1,22 @@
+INFO - 2023-11-28 01:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-11-28 01:41:43 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-11-28 01:41:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-11-28 01:41:56 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')

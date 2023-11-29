@@ -96,7 +96,7 @@ case 'setuju':
                 </thead>
                 <tbody>
                     <?php
-                    $Qlist = $db->table('propsal')->select("id, name, address, latar_belakang")->where('id', $dx)->get()->getResult();
+                    $Qlist = $db->table('proposal')->select("id, name, address, latar_belakang")->where('id', $dx)->get()->getResult();
 
                     if(count($Qlist)){
                         $i = 1;

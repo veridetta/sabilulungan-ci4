@@ -111,12 +111,12 @@
                 <th>Hasil Evaluasi</th>
                 <th>Pertimbangan TAPD</th>
                 <th>Pemeriksaan TU</th>
-                <th>Pemeriksaan Walikota</th>
+                <th>Pemeriksaan Bupati</th>
                 <th>Pemeriksaan Tim Pertimbangan</th>
                 <th>Pemeriksaan SKPD</th>
                 <th>Verifikasi Tim Pertimbangan</th>
                 <th>Verifikasi TAPD</th>
-                <th>Penyetujuan Walikota</th>
+                <th>Penyetujuan Bupati</th>
             </tr>
         </thead>';
         ?>        

@@ -113,6 +113,10 @@ $routes->get('/tapd', 'HasLogin::tapd');
 $routes->get('/tapd/(:any)', 'HasLogin::tapd/$1');
 $routes->get('/tapd/(:any)/(:any)', 'HasLogin::tapd/$1/$2');
 
+$routes->post('/tapd', 'HasLogin::tapd');
+$routes->post('/tapd/(:any)', 'HasLogin::tapd/$1');
+$routes->post('/tapd/(:any)/(:any)', 'HasLogin::tapd/$1/$2');
+
 $routes->post('/process/tapd', 'Process::tapd');
 $routes->post('/process/tapd/(:any)', 'Process::tapd/$1');
 $routes->post('/process/tapd/(:any)/(:any)', 'Process::tapd/$1/$2');

@@ -76,7 +76,7 @@ $Qdetail = $db->query("SELECT a.name, a.judul, a.latar_belakang, SUM(b.amount) A
                 <select name="kategori">
                 <!-- <option value="0">-- Silahkan Pilih</option> -->
                 <?php
-                $Qkategori = $db->table('proposal_type')->select("id, name")->order_by('id', 'ASC')->get();
+                $Qkategori = $db->table('proposal_type')->select("id, name")->orderBy('id', 'ASC')->get();
 
                 foreach($Qkategori->getResult() as $kategori){
                     echo '<option value="'.$kategori->id.'">'.$kategori->name.'</option>';
@@ -205,11 +205,10 @@ $Qdetail = $db->query("SELECT a.name, a.judul, a.latar_belakang, SUM(b.amount) A
                         }
 
                         $Qlist = $db->query("SELECT id, name, address, maksud_tujuan FROM proposal $where ORDER BY id DESC LIMIT $position,$limit");
-                    }else $Qlist = $db->table('proposal')->select("id, name, address, maksud_tujuan")->order_by('id', 'DESC')->limit($limit, $position)->get()->getResult();
-
-                    if(count($Qlist)){
+                    }else $Qlist = $db->table('proposal')->select("id, name, address, maksud_tujuan")->orderBy('id', 'DESC')->limit($limit, $position);
+                    if(count($Qlist->get()->getResultArray())){
                         $i = 1;
-                        foreach($Qlist as $list){
+                        foreach($Qlist->get()->getResult() as $list){
                             $Qmohon = $db->query("SELECT SUM(amount) AS mohon FROM proposal_dana WHERE `proposal_id`='$list->id'"); $mohon = $Qmohon->getResult(); 
 
                             $Qbesar = $db->query("SELECT value FROM proposal_checklist WHERE `proposal_id`='$list->id' AND checklist_id IN (26,28,29)"); $besar = $Qbesar->getResult(); 
@@ -298,8 +297,8 @@ $Qdetail = $db->query("SELECT a.name, a.judul, a.latar_belakang, SUM(b.amount) A
                     else $where .= "WHERE type_id = $kategori AND YEAR(time_entry) >= '$dari' AND YEAR(time_entry) <= '$sampai' AND skpd_id = $skpd";
                 }
 
-                $Qpaging = $db->query("SELECT id, name, address, maksud_tujuan FROM proposal $where");
-            }else $Qpaging = $db->table('proposal')->select("id, name, address, maksud_tujuan")->order_by('id', 'DESC')->get()->getResult();
+                $Qpaging = $db->query("SELECT id, name, address, maksud_tujuan FROM proposal $where")->getResult();
+            }else $Qpaging = $db->table('proposal')->select("id, name, address, maksud_tujuan")->orderBy('id', 'DESC')->get()->getResult();
 
             $num_page = ceil(count($Qpaging) / $limit);
             if(count($Qpaging) > $limit){
@@ -310,8 +309,8 @@ $Qdetail = $db->query("SELECT a.name, a.judul, a.latar_belakang, SUM(b.amount) A
             <div class="control-actions">
                 <!-- <input name="lanjut" class="btn-red btn-plain btn" type="submit" value="Cetak DNC PBH"> -->
                 <?php
-                if(isset($_POST['rekap'])) echo '<a target="_blank" href="'.base_url('process/generate_dnc/'.$_POST['kategori'].'/'.$_POST['dari'].'/'.$_POST['sampai'].'/'.$_POST['skpd']).'" class="btn-red btn-plain btn" style="display:inline">Cetak DNC PBH</a>';
-                else echo '<a target="_blank" href="'.base_url('process/generate_dnc/').'" class="btn-red btn-plain btn" style="display:inline">Cetak DNC PBH</a>';
+                if(isset($_POST['rekap'])) echo '<a target="_blank" href="'.base_url('generate_dnc/'.$_POST['kategori'].'/'.$_POST['dari'].'/'.$_POST['sampai'].'/'.$_POST['skpd']).'" class="btn-red btn-plain btn" style="display:inline">Cetak DNC PBH</a>';
+                else echo '<a target="_blank" href="'.base_url('generate_dnc/').'" class="btn-red btn-plain btn" style="display:inline">Cetak DNC PBH</a>';
                 ?>
                 <a href="<?php echo site_url('report') ?>" class="btn-grey btn-plain btn" style="display:inline">Kembali</a>
             </div>
