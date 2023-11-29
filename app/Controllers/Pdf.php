@@ -87,6 +87,7 @@ class Pdf extends Controller {
                     $request = \Config\Services::request();
                     if($d==1) $file = view('content/pdf/report_hibah',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]);
                     elseif($d==2) $file = view('content/pdf/report_bansos',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]);
+                    elseif($d==3) $file = view('content/pdf/report_hibah2',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]);
                     $paper = 'default'; 
                     $orientation = $papers;
                     $outfile = $tp.'.pdf';
@@ -120,7 +121,8 @@ class Pdf extends Controller {
             helper('url');
             $response = \Config\Services::response();
             if($d==1) $response->redirect(site_url('report_hibah/'.$dx));
-            elseif($d==2) $response->redirect(site_url('report_bansos/'.$dx));			
+            elseif($d==2) $response->redirect(site_url('report_bansos/'.$dx));	
+            elseif($d==2) $response->redirect(site_url('report_hibah2/'.$dx));			
 		}
 	}
     public function generate(){
@@ -490,5 +492,7 @@ class Pdf extends Controller {
 		</html>
         <?php
 	}
-    
+    public function report_hibah2($tp){
+        return view('content/pdf/report_hibah2',['db' => $this->db, 'ifunction' => $this->ifunction, 'tp'=>1]);
+    }
 }

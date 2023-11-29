@@ -22,7 +22,7 @@
                     elseif($_SESSION['sabilulungan']['role']==5) echo '<li><a class="link-purple" href="'.site_url('hibah').'">Daftar</a></li><li><a class="link-purple" href="'.site_url('report').'">Pengecekan Berkas</a></li> ';
                     elseif($_SESSION['sabilulungan']['role']==4) echo '<li><a class="link-purple" href="'.site_url('report').'">Pemilihan SKPD dan Verifikasi</a></li> ';
                     elseif($_SESSION['sabilulungan']['role']==3) echo '<li><a class="link-purple" href="'.site_url('report').'">Pemberian Rekomendasi</a></li> ';
-                    elseif($_SESSION['sabilulungan']['role']==2) echo '<li><a class="link-purple" href="'.site_url('report').'">Verifikasi</a></li><li><a class="link-purple" href="'.site_url('tapd/generate').'">Generate</a></li> ';
+                    elseif($_SESSION['sabilulungan']['role']==2) echo '<li><a class="link-purple" href="'.site_url('report').'">Verifikasi</a></li><li><a class="link-purple" href="'.site_url('tapd/generate').'">Generate</a></li> <li><a class="link-green" href="'.site_url('tapd-report').'">Laporan</a></li>';
                     elseif($_SESSION['sabilulungan']['role']==1) echo '<li><a class="link-purple" href="'.site_url('report').'">Pemeriksaan Proposal</a></li> ';
                     elseif($_SESSION['sabilulungan']['role']==7) echo '<li><a class="link-purple" href="'.site_url('hibah').'">Daftar Hibah</a></li><li><a class="link-purple" href="'.site_url('report').'">Pemeriksaan</a></li> ';
                     elseif($_SESSION['sabilulungan']['role']==8) echo '<li><a class="link-purple" href="'.site_url('input').'">Mendaftar Hibah Masuk</a></li> ';

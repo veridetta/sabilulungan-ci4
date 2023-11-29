@@ -109,6 +109,14 @@ $routes->post('/process/skpd', 'Process::skpd');
 $routes->post('/process/skpd/(:any)', 'Process::skpd/$1');
 $routes->post('/process/skpd/(:any)/(:any)', 'Process::skpd/$1/$2');
 
+$routes->get('/tapd-report', 'HasLogin::tapd_report');
+$routes->get('/tapd-report/(:any)', 'HasLogin::tapd_report/$1');
+$routes->get('/tapd-report/(:any)/(:any)', 'HasLogin::tapd_report/$1/$2');
+
+$routes->post('/tapd-report', 'HasLogin::tapd_report');
+$routes->post('/tapd-report/(:any)', 'HasLogin::tapd_report/$1');
+$routes->post('/tapd-report/(:any)/(:any)', 'HasLogin::tapd_report/$1/$2');
+
 $routes->get('/tapd', 'HasLogin::tapd');
 $routes->get('/tapd/(:any)', 'HasLogin::tapd/$1');
 $routes->get('/tapd/(:any)/(:any)', 'HasLogin::tapd/$1/$2');
@@ -190,6 +198,9 @@ $routes->get('/report_hibah/(:any)', 'Pdf::report_hibah/$1');
 
 $routes->get('/report_bansos', 'Pdf::report_bansos');
 $routes->get('/report_bansos/(:any)', 'Pdf::report_bansos/$1');
+
+$routes->get('/report_hibah2', 'Pdf::report_hibah2');
+$routes->get('/report_hibah2/(:any)', 'Pdf::report_hibah2/$1');
 
 $routes->get('/generate_dnc', 'Pdf::generate_dnc');
 $routes->get('/generate_dnc/(:any)', 'Pdf::generate_dnc/$1');
