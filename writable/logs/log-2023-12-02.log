@@ -1,0 +1,181 @@
+INFO - 2023-12-02 05:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:26:24 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2023-12-02 05:26:28 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'ci_sabilulungan', 3306, '', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Views\content\home.php(8): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(228): include('E:\\WEB\\LARAGON\\...')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Common.php(1190): CodeIgniter\View\View->render('content/home', Array, true)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Main.php(26): view('content/home', Array)
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Main->index()
+#10 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+#11 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Views\content\home.php(8): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(228): include('E:\\WEB\\LARAGON\\...')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Common.php(1190): CodeIgniter\View\View->render('content/home', Array, true)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Main.php(26): view('content/home', Array)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Main->index()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+#10 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#13 {main}
+CRITICAL - 2023-12-02 05:26:28 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `cms`
+WHERE `page_id` = :page_id:
+ORDER BY `sequence` ASC', [...], false)
+ 3 APPPATH\Views\content\home.php(8): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\View\View.php(228): include('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Views\\content\\home.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/home', [], true)
+ 7 APPPATH\Controllers\Main.php(26): view('content/home', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Main->index()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:26:54 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:27:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:27:05 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:27:13 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:27:13 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:27:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:27:26 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2023-12-02 05:27:26 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\content\report.php on line 125.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/report', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(28): view('content/report', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->report()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:30:00 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2023-12-02 05:30:00 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\content\report.php on line 125.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/report', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(28): view('content/report', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->report()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:31:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:31:53 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2023-12-02 05:31:53 --> Undefined variable $limit
+in APPPATH\Controllers\HasLogin.php on line 118.
+ 1 APPPATH\Controllers\HasLogin.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $limit', 'E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Controllers\\HasLogin.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->report()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2023-12-02 05:32:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-02 05:32:17 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')

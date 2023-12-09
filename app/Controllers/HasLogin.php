@@ -23,9 +23,107 @@ class HasLogin extends Controller {
 	{
 		
         $session = \Config\Services::session();
+        $limit = 15;
+        $p = $p ? $p : 1;
+        $position = ($p -1) * $limit;
+        $this->db->_protect_identifiers=false;
+        if(isset($_POST['search'])){
+            //Query Search
+            $builder = $this->db->table('proposal');
+            $builder->select("proposal.id, proposal.name, proposal.address, proposal.judul, proposal.current_stat, proposal.nphd, proposal.tanggal_lpj, proposal_checklist.value,(SELECT SUM(amount) FROM proposal_dana WHERE proposal_dana.proposal_id = proposal.id) as total_amount");
+            $builder->join('proposal_checklist', 'proposal.id = proposal_checklist.proposal_id');
+            $builder->where('proposal_checklist.checklist_id', 28);
+            $builder->like('proposal.name', $_POST['keyword']);
+            $builder->orderBy('proposal.id', 'DESC');
+            $builder->limit($limit, $position);
+            $Qlist = $builder->get()->getResult();
+        }elseif(isset($_POST['filter'])){
+            $kategori = $_POST['kategori'];
+            $dari = $_POST['dari'];
+            $sampai = $_POST['sampai'];
+            $skpd = $_POST['skpd'];            
+            $where = ''; 
+            $stat = 'proposal.current_stat=7';
+            //kategori
+            if($kategori && !$dari && !$sampai && !$skpd){
+                if($kategori=='all') $where .= "$stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND $stat";
+            }elseif($kategori && $dari && !$sampai && !$skpd){
+                if($kategori=='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND YEAR(proposal.time_entry) >= '$dari' AND $stat";
+            }elseif($kategori && !$dari && $sampai && !$skpd){
+                if($kategori=='all') $where .= "WHERE YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+            }elseif($kategori && !$dari && !$sampai && $skpd){
+                if($kategori=='all' AND $skpd=='all') $where .= "$stat";
+                elseif($kategori!='all' AND $skpd=='all') $where .= "WHERE proposal.type_id = $kategori AND $stat";
+                elseif($kategori=='all' AND $skpd!='all') $where .= "WHERE proposal.skpd_id = $skpd AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND proposal.skpd_id = $skpd AND $stat";
+            }                        
 
+            //dari
+            elseif(!$kategori && $dari && !$sampai && !$skpd) $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND $stat";
+            elseif(!$kategori && $dari && $sampai && !$skpd) $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+            elseif(!$kategori && $dari && !$sampai && $skpd){
+                if($skpd=='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND $stat";
+                else $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND proposal.skpd_id = $skpd AND $stat";
+            }
+
+            //sampai
+            elseif(!$kategori && !$dari && $sampai && !$skpd) $where .= "WHERE YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+            elseif(!$kategori && !$dari && $sampai && $skpd){
+                if($skpd=='all') $where .= "WHERE YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+                else $where .= "WHERE YEAR(proposal.time_entry) <= '$sampai' AND proposal.skpd_id = $skpd AND $stat";
+            }
+
+            //skpd
+            elseif(!$kategori && !$dari && !$sampai && $skpd){
+                if($skpd=='all') $where .= "$stat";
+                else $where .= "WHERE proposal.skpd_id = $skpd AND $stat";
+            }
+
+            //mixed
+            elseif($kategori && $dari && $sampai && !$skpd){
+                if($kategori=='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+            }elseif(!$kategori && $dari && $sampai && $skpd){
+                if($skpd=='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+                else $where .= "WHERE proposal.skpd_id = $skpd AND YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+            }elseif($kategori && $dari && !$sampai && $skpd){
+                if($kategori=='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND proposal.skpd_id = $skpd AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND YEAR(proposal.time_entry) >= '$dari' AND proposal.skpd_id = $skpd AND $stat";
+            }elseif($kategori && !$dari && $sampai && $skpd){
+                if($kategori=='all') $where .= "WHERE YEAR(proposal.time_entry) <= '$sampai' AND proposal.skpd_id = $skpd AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND YEAR(proposal.time_entry) <= '$sampai' AND proposal.skpd_id = $skpd AND $stat";
+            }elseif($kategori && $dari && $sampai && $skpd){
+                if($kategori=='all' && $skpd=='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+                elseif($kategori!='all' && $skpd=='all') $where .= "WHERE type_id = $kategori AND YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND $stat";
+                elseif($kategori=='all' && $skpd!='all') $where .= "WHERE YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND proposal.skpd_id = $skpd AND $stat";
+                else $where .= "WHERE proposal.type_id = $kategori AND YEAR(proposal.time_entry) >= '$dari' AND YEAR(proposal.time_entry) <= '$sampai' AND proposal.skpd_id = $skpd AND $stat";
+            }
+
+            $Qlist = $this->db->query("SELECT proposal.id, proposal.maksud_tujuan, proposal.name, proposal.address, proposal.judul, proposal.current_stat, proposal.nphd, proposal.tanggal_lpj, proposal_checklist.value,(SELECT SUM(amount) FROM proposal_dana WHERE proposal_dana.proposal_id = proposal.id) as total_amount FROM proposal 
+            JOIN proposal_checklist ON proposal.id = proposal_checklist.proposal_id
+            $where AND proposal_checklist.checklist_id = 28
+            ORDER BY proposal.id DESC 
+            LIMIT $position,$limit")->getResult();           
+        }else{
+            //Query List
+            
+            $builder = $this->db->table('proposal');
+            $builder->select("proposal.id, proposal.name, proposal.maksud_tujuan, proposal.address, proposal.judul, proposal.current_stat, proposal.nphd, proposal.tanggal_lpj, proposal_checklist.value, 
+            (SELECT SUM(amount) FROM proposal_dana WHERE proposal_dana.proposal_id = proposal.id) as total_amount");
+            $builder->join('proposal_checklist', 'proposal.id = proposal_checklist.proposal_id');
+            if (isset($_POST['keyword'])) {
+                $builder->like('proposal.judul', $_POST['keyword']);
+            }
+            $builder->where('proposal_checklist.checklist_id', 28);
+            $builder->orderBy('proposal.id', 'DESC');
+            $builder->limit($limit, $position);
+            $Qlist = $builder->get()->getResult();
+        }
         if($session->has('sabilulungan')) {
-            return view('content/report',['db' => $this->db,'p'=>$p,'dx'=>$dx, 'ifunction' => $this->ifunction]);
+            return view('content/report',['db' => $this->db,'p'=>$p,'dx'=>$dx, 'ifunction' => $this->ifunction, 'Qlist' => $Qlist]);
         }else{
             return redirect()->to(base_url('login'));
         }

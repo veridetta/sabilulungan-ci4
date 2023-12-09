@@ -128,13 +128,16 @@
                 $mohon = $Qmohon->getResult();  
 
                 $Qbesar = $db->query("SELECT value FROM proposal_checklist WHERE `proposal_id`='$list->id' AND checklist_id IN (26,28)"); $besar = $Qbesar->getResult();
-
                 echo '<tr>
-                        <td>'; if($_SESSION['sabilulungan']['role']==9) echo '<a href="'.site_url('hibah/edit/'.$list->id).'">'.$list->judul.'</a>'; else echo '<a href="'.site_url('detail/'.$list->id).'">'.$list->judul.'</a>'; echo '</td>
-                        <td>Rp. '.number_format($mohon[0]->mohon,0,",",".").',-</td>
-                        <td>'; if(isset($besar[0]->value)) echo 'Rp. '.number_format($besar[0]->value,0,",",".").',-'; else echo '-'; echo '</td>
-                        <td>'; if(isset($besar[1]->value)) echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; else echo '-'; echo '</td>';
-
+                        <td>'; 
+                        if($_SESSION['sabilulungan']['role']==9){ echo '<a href="'.site_url('hibah/edit/'.$list->id).'">'.$list->judul.'</a>'; 
+                        }else{
+                             echo '<a href="'.site_url('detail/'.$list->id).'">'.$list->judul.'</a>'; echo '</td>
+                            <td>Rp. '.number_format($mohon[0]->mohon,0,",",".").',-</td>
+                            <td>'; if(isset($besar[0]->value)) echo 'Rp. '.number_format($besar[0]->value,0,",",".").',-'; else echo '-'; echo '</td>
+                             <td>'; if(isset($besar[1]->value)) echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; else echo '-'; echo '</td>';
+                        }
+                        
                         if($list->current_stat==0 && $_SESSION['sabilulungan']['role']==5 || $list->current_stat==0 && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==0 && $_SESSION['sabilulungan']['role']==9){
                             $approvalExists = $db->table('proposal_approval')
                                         ->where('flow_id', $list->current_stat+1)
@@ -147,7 +150,6 @@
                                         echo '<td style="text-align:center"><a href="'.site_url('tatausaha/periksa/'.$list->id).'">PROSES</a></td>';
                                     }
                             $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
-
                             echo '<td style="text-align:center">'.$status.'</td>';
                             echo '<td style="text-align:center">'.$status.'</td>';
                             echo '<td style="text-align:center">'.$status.'</td>';
@@ -403,12 +405,12 @@
                             ->where('action', 2)
                             ->countAllResults();
 
-                        if($approvalExists) {
-                            echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('walikota/setuju/'.$list->id).'">DITOLAK</a></td>';
-                        } else {
-                            echo '<td style="text-align:center"><a href="'.site_url('walikota/setuju/'.$list->id).'">PROSES</a></td>';
-                        }
-                        $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
+                            if($approvalExists) {
+                                echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('walikota/setuju/'.$list->id).'">DITOLAK</a></td>';
+                            } else {
+                                echo '<td style="text-align:center"><a href="'.site_url('walikota/setuju/'.$list->id).'">PROSES</a></td>';
+                            }
+                            $status = !empty($approvalExists) ? 'PROSES DIHENTIKAN' : 'PROSES';
                             
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
@@ -426,6 +428,7 @@
                         }
 
                         elseif($list->current_stat==7 && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==7 && $_SESSION['sabilulungan']['role']==9){
+                            echo "sini";
                             if($_SESSION['sabilulungan']['role']==9){
                                 echo '<td style="text-align:center"><a href="'.site_url('tatausaha/edit/'.$list->id).'">EDIT</a></td>';
                                 echo '<td style="text-align:center"><a href="'.site_url('walikota/edit/'.$list->id).'">EDIT</a></td>';
@@ -436,7 +439,7 @@
                                 echo '<td style="text-align:center"><a href="'.site_url('walikota/view/'.$list->id).'">EDIT</a></td>';
                             }else{
                                 $Qstat = $db->query("SELECT action FROM proposal_approval WHERE `proposal_id`='$list->id'");
-
+                            
                                 foreach($Qstat->getResult() as $stat){
                                     if($stat->action==1) $status = '<a style="color:#00923f;cursor:text">DISETUJUI</a>'; elseif($stat->action==2) $status = '<a style="color:#F00;cursor:text">DITOLAK</a>';
 
@@ -452,6 +455,15 @@
                             }
                             if($_SESSION['sabilulungan']['role']==9) echo '<td style="text-align:center"><a href="'.site_url('detil/edit/'.$list->id).'">EDIT</a></td>';
                             else echo '<td style="text-align:center"><a href="'.site_url('detil/proposal/'.$list->id).'">LIHAT</a></td>';
+                        }else{
+                            $Qstat = $db->query("SELECT action FROM proposal_approval WHERE `proposal_id`='$list->id'");
+                            
+                                foreach($Qstat->getResult() as $stat){
+                                    if($stat->action==1) $status = '<a style="color:#00923f;cursor:text">DISETUJUI</a>'; elseif($stat->action==2) $status = '<a style="color:#F00;cursor:text">DITOLAK</a>';
+
+                                    echo '<td style="text-align:center">DISETUJUI</td>';
+                                }
+                            echo '<td style="text-align:center"><a href="'.site_url('detil/proposal/'.$list->id).'">LIHAT</a></td>';
                         }
 
                 echo '</tr>';
