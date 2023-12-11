@@ -2078,7 +2078,7 @@ textarea {
 
 .project-list-text {
   float: left;
-  width: 255px; }
+  min-width: 255px; }
   .project-list-text h3 {
     font-size: 14px;
     line-height: 1.4em; }

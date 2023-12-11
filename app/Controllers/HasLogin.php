@@ -111,13 +111,12 @@ class HasLogin extends Controller {
             //Query List
             
             $builder = $this->db->table('proposal');
-            $builder->select("proposal.id, proposal.name, proposal.maksud_tujuan, proposal.address, proposal.judul, proposal.current_stat, proposal.nphd, proposal.tanggal_lpj, proposal_checklist.value, 
+            $builder->select("proposal.id, proposal.name, proposal.maksud_tujuan, proposal.address, proposal.judul, proposal.current_stat, proposal.nphd, proposal.tanggal_lpj, 
+            (SELECT proposal_checklist.value FROM proposal_checklist WHERE proposal_checklist.proposal_id = proposal.id AND (proposal_checklist.checklist_id IS NULL OR proposal_checklist.checklist_id IN (26, 28)) LIMIT 1) as value,
             (SELECT SUM(amount) FROM proposal_dana WHERE proposal_dana.proposal_id = proposal.id) as total_amount");
-            $builder->join('proposal_checklist', 'proposal.id = proposal_checklist.proposal_id');
             if (isset($_POST['keyword'])) {
                 $builder->like('proposal.judul', $_POST['keyword']);
             }
-            $builder->where('proposal_checklist.checklist_id', 28);
             $builder->orderBy('proposal.id', 'DESC');
             $builder->limit($limit, $position);
             $Qlist = $builder->get()->getResult();

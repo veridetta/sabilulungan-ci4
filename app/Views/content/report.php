@@ -122,6 +122,7 @@
         ?>        
         <tbody>
         <?php
+        
         if(count($Qlist)){
             foreach($Qlist as $list){
                 $Qmohon = $db->query("SELECT SUM(amount) AS mohon FROM proposal_dana WHERE `proposal_id`='$list->id'"); 
@@ -138,14 +139,18 @@
                              <td>'; if(isset($besar[1]->value)) echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; else echo '-'; echo '</td>';
                         }
                         
-                        if($list->current_stat==0 && $_SESSION['sabilulungan']['role']==5 || $list->current_stat==0 && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==0 && $_SESSION['sabilulungan']['role']==9){
-                            $approvalExists = $db->table('proposal_approval')
-                                        ->where('flow_id', $list->current_stat+1)
-                                        ->where('action', 2)
-                                        ->countAllResults();
+                        if($list->current_stat==NULL && $_SESSION['sabilulungan']['role']==5 || $list->current_stat==NULL && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==NULL && $_SESSION['sabilulungan']['role']==9){
+                            if($list->current_stat!==NULL){
+                                $approvalExists = $db->table('proposal_approval')
+                                ->where('flow_id', $list->current_stat+1)
+                                ->where('action', 2)
+                                ->countAllResults();
+                            }else{
+                                $approvalExists = NULL;
+                            }
 
                                     if($approvalExists) {
-                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('tatausaha/periksa/'.$list->id).'">DITOLAK</a></td>';
+                                        echo '<td style="text-align:center; "><a class="link-red" style="color:red;" href="'.site_url('tatausaha/periksa/'.$list->id).'">DITOLAK KK</a></td>';
                                     } else {
                                         echo '<td style="text-align:center"><a href="'.site_url('tatausaha/periksa/'.$list->id).'">PROSES</a></td>';
                                     }
@@ -457,11 +462,15 @@
                             else echo '<td style="text-align:center"><a href="'.site_url('detil/proposal/'.$list->id).'">LIHAT</a></td>';
                         }else{
                             $Qstat = $db->query("SELECT action FROM proposal_approval WHERE `proposal_id`='$list->id'");
-                            
+                            //hitung Qstat
+                            $count = $Qstat->getNumRows();
                                 foreach($Qstat->getResult() as $stat){
                                     if($stat->action==1) $status = '<a style="color:#00923f;cursor:text">DISETUJUI</a>'; elseif($stat->action==2) $status = '<a style="color:#F00;cursor:text">DITOLAK</a>';
 
                                     echo '<td style="text-align:center">DISETUJUI</td>';
+                                }
+                                for($i=0;$i<(7-$count);$i++){
+                                    echo '<td style="text-align:center">DIPROSES</td>';
                                 }
                             echo '<td style="text-align:center"><a href="'.site_url('detil/proposal/'.$list->id).'">LIHAT</a></td>';
                         }

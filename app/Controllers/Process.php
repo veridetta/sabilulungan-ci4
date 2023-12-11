@@ -126,7 +126,8 @@ class Process extends Controller {
 			$deskripsi = $this->request->getPost('deskripsi');
 			$jumlah = $this->request->getPost('jumlah');
 			$role_id = $this->request->getPost('role_id');
-
+			$foto = $this->request->getFileMultiple('foto');
+			
 			if (!empty($name) && !empty($address) && !empty($judul) && !empty($latar) && !empty($maksud)) {
 				// Lakukan validasi file proposal di sini
 

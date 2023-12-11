@@ -94,4 +94,18 @@ class Main extends Controller {
 					->getResult();
 		return view('content/dashboard',['db' => $this->db, 'ifunction' => $this->ifunction, 'totalProposal' => $totalProposal, 'proposalData' => $proposalData, 'proposalDataTahunIni' => $proposalDataTahunIni]);	 
 	}
+	public function api() {
+		$builder = $this->db->table('proposal');
+		$builder->select("proposal.id AS noreg, skpd.name AS opd, proposal.name AS nama_pengaju, proposal.judul, proposal.latar_belakang, proposal.maksud_tujuan, proposal.address AS alamat, proposal_dana.amount AS nilai, proposal_type.name AS type, proposal.current_stat AS level_tahap, flow.name AS tahapan, YEAR(proposal.time_entry) AS tahun");
+		$builder->join('flow', 'proposal.current_stat = flow.id', 'left');
+		$builder->join('proposal_dana', 'proposal_dana.proposal_id = proposal.id');
+		$builder->join('skpd', 'skpd.id = proposal.skpd_id');
+		$builder->join('proposal_type', 'proposal_type.id = proposal.type_id');
+		$builder->where("proposal_dana.sequence", '1');
+		$builder->where("YEAR(proposal.time_entry)", "YEAR(CURRENT_DATE)", false);
+		$builder->orderBy('proposal.current_stat');
+		$results = $builder->get()->getResult();
+
+		return $this->response->setJSON($results);
+	}
 }

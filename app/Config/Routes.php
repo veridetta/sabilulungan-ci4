@@ -209,6 +209,7 @@ $routes->get('/generate_dnc/(:any)/(:any)/(:any)', 'Pdf::generate_dnc/$1/$2/$3')
 $routes->get('/generate_dnc/(:any)/(:any)/(:any)/(:any)', 'Pdf::generate_dnc/$1/$2/$3/$4');
 
 $routes->get('/generate', 'Pdf::generate');
+$routes->get('/api', 'Main::api');
 
 
 
