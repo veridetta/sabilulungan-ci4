@@ -12,6 +12,41 @@
     <link rel="stylesheet" href="<?php echo base_url('static/css/main.css') ?>">
     <?= $this->renderSection('page-css'); ?>
     <style type="text/css">
+        .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+/* Gaya konten modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Gaya tombol tutup modal */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
         .nav-main a {font-size: 13px !important;}
         .fb_hidden{position:absolute;top:-10000px;z-index:10001}
         .fb_invisible{display:none}

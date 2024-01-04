@@ -210,6 +210,8 @@ $routes->get('/generate_dnc/(:any)/(:any)/(:any)/(:any)', 'Pdf::generate_dnc/$1/
 
 $routes->get('/generate', 'Pdf::generate');
 $routes->get('/api', 'Main::api');
+$routes->post('/get_organisasi', 'Main::getOrganisasi');
+$routes->get('/get_organisasi', 'Main::getOrganisasi');
 
 
 

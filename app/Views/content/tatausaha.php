@@ -18,7 +18,121 @@ case 'periksa':
 
         <form action="<?php echo site_url('process/tatausaha/periksa/'.$dx) ?>" method="post" class="form-check form-global">
             <h1 class="page-title page-title-border">Detail Pengecekan Dokumen</h1>
-            <p><a href="<?= base_url('organisasi');?>" target="_blank">Lihat data organisasi legal disini.</a></p>
+            <!-- Tautan untuk membuka modal -->
+            <p><a href="#" id="lihatDataOrganisasi">Lihat data organisasi legal disini.</a></p>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h1 class="page-title">Organisasi Legal</h1>
+                <div class="form-search-wrapper">
+                <input type="text" id="pencarian" name="keyword" value="" placeholder="Cari Organisasi">
+
+                </div>
+                <table class="table-global">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Telp</th>
+                            <th>Status</th>
+                            <?php if($_SESSION['sabilulungan']['role']== 10) { ?>
+                                <th width="100">Aksi</th>
+                            <?php } ?>
+                        </tr>
+                    </thead>
+                        <tbody id="organisasiTableBody">
+                            <!-- Data tabel akan diperbarui menggunakan AJAX -->
+                        </tbody>
+                </table>
+  
+                <a href="#" onclick="closeModal()">Tutup Modal</a>
+            </div>
+            </div>
+
+            <script>
+                function openModal() {
+                    var modal = document.getElementById('myModal');
+                    modal.style.display = 'block';
+                    fetchData();
+                }
+
+                function closeModal() {
+                    var modal = document.getElementById('myModal');
+                    modal.style.display = 'none';
+                }
+
+                function fetchData() {
+        var pencarianValue = document.getElementById('pencarian').value;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = JSON.parse(xhr.responseText);
+                updateTable(data);
+            }
+        };
+        xhr.open('POST', '<?= base_url('get_organisasi'); ?>', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('keyword=' + encodeURIComponent(pencarianValue));
+    }
+
+                function updateTable(data) {
+                    var tableBody = document.getElementById('organisasiTableBody');
+                    tableBody.innerHTML = ''; // Kosongkan isi tbody
+
+                    for (var i = 0; i < data.length; i++) {
+                        var row = tableBody.insertRow(i);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        var cell4 = row.insertCell(3);
+                        var cell5 = row.insertCell(4);
+
+                        cell1.innerHTML = i + 1;
+                        cell2.innerHTML = data[i].name;
+                        cell3.innerHTML = data[i].address;
+                        cell4.innerHTML = data[i].phone;
+                        cell5.innerHTML = '<a href="#" class="status" data-id="' + data[i].id + '">' + (data[i].legal == 1 ? 'Aktif' : 'Tidak Aktif') + '</a>';
+
+                    // Menambah event listener ke elemen status
+                    cell5.querySelector('.status').addEventListener('click', function (event) {
+                        var statusElement = event.target;
+                        var id = statusElement.getAttribute('data-id');
+                        toggleStatus(id); // Memanggil fungsi untuk mengubah status
+                    });
+                            }
+                }
+
+                document.getElementById('lihatDataOrganisasi').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    openModal();
+                });
+                document.getElementById('pencarian').addEventListener('input', function () {
+        fetchData();
+    });
+
+    document.getElementById('pencarian').addEventListener('keypress', function (event) {
+        // Jika tombol Enter ditekan, maka panggil fetchData()
+        if (event.key === 'Enter') {
+            fetchData();
+        }
+    });
+    function toggleStatus(id) {
+        // Simpan checkbox pertama dalam variabel
+        var checkbox = document.querySelector('input[name="persyaratan[]"]');
+        
+        // Kirim permintaan AJAX atau lakukan tindakan lain yang diperlukan
+        // Setelah berhasil, ubah properti checked dari checkbox pertama
+        checkbox.checked = !checkbox.checked;
+
+        // Anda dapat menutup modal atau melakukan tindakan lainnya yang sesuai
+        closeModal();
+    }
+            </script>
+
+
             <ul class="category-list list-nostyle">
                 <li>
                     <h3 style="color:#ec7404">Kategori</h3>

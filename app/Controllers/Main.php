@@ -108,4 +108,23 @@ class Main extends Controller {
 
 		return $this->response->setJSON($results);
 	}
+	public function getOrganisasi()
+    {
+		//get post
+        $request = $this->request->getPost(); 
+
+        $builder = $this->db->table('organisasi a');
+        $builder->select('a.id, a.name, a.legal, a.address, a.phone');
+        $builder->orderBy('a.name', 'ASC');
+
+        // Menentukan apakah ada kata kunci pencarian
+        if (isset($request['keyword']) && !empty($request['keyword'])) {
+            $builder->like('a.name', $request['keyword']);
+        }
+
+        $query = $builder->get();
+        $data = $query->getResult();
+
+        return $this->response->setJSON($data);
+    }
 }
