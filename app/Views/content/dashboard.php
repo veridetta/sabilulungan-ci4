@@ -47,49 +47,64 @@
 //document ready
 $(document).ready(function(){
     if($("#prosesChart").length && $("#prosesChart").is(":visible")){
+        var data = <?php echo json_encode($resultArray); ?>;
+        console.log(data);
         var chrt = $("#prosesChart")[0].getContext("2d");
         var chartId = new Chart(chrt, {
         type: 'doughnut',
         data: {
-        datasets: [{
-            label: "Persentase Tahapan",
-            data: [14.8, 14.8, 10.8, 14.8, 25.8, 14.8, 7.8,20.8],
-            backgroundColor: ['#2196F3', '#4CAF50', '#FF5722', '#ff8c00', '#FFEB3B', '#9C27B0','#009688'],
-            hoverOffset: 5,
-            borderWidth: 0
-        }],
-        labels: ["Pemeriksaan Kelengkapan oleh Bagian TU : Proses 15%", "Pemeriksaan oleh Walikota : Proses 30%", "Klasifikasi sesuai SKPD oleh Tim Pertimbangan : Proses 40%", "Rekomendasi Dana oleh SKPD  : Proses 50%", "Verifikasi Proposal oleh Tim Pertimbangan : Proses 65%", "Verifikasi Proposal oleh TAPD  : Proses 85%","Persetujuan Bupati : Proses 100%","Proese11"],
-        },
+                labels: data.labels,
+                datasets: [{
+                    data: data.datasets[0].data,
+                    backgroundColor: data.datasets[0].backgroundColor,
+                    hoverOffset: 4,
+                    borderWidth: 0
+                }]
+            },
         options: {
-        plugins: {
-            legend: {
-                display:false
-            },
-            title:{
-                display:false,
-                text:"Persentase Tahapan"
-            },
-            labels:{
-                render: (args)=>{
-                    if(args.value>20){
-                                return args.value + '%';
-                            }
+            plugins: {
+                legend: {
+                    display:false
                 },
-            }
-        }
+                title:{
+                    display:false,
+                    text:"Persentase Tahapan"
+                },
+                labels:{
+                    render: (args)=>{
+                        if(args.value><?php echo $persen;?> ){
+                                    return args.value + '%';
+                                }
+                    },
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            //ambil label
+                            var label = context.label || '';
+                            //atur max char
+                            if (label.length > 20) {
+                                label = label.substr(0, 20) + '...';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+
         },
         });
     }
     if ($("#presentase").length && $("#presentase").is(":visible")) {
+        var data = <?php echo json_encode($resultArrayFlow); ?>;
         var ctx = $("#presentase")[0].getContext("2d");
         var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Verifikasi Proposal oleh Tim Pertimbangan', 'Klasifikasi sesuai SKPD oleh Tim Pertimbangan', 'Rekomendasi Dana oleh SKPD'],
+                labels: data.labels,
                 datasets: [{
-                    label: 'Persentase Tahapan',
-                    data: [14.8, 14.8, 14.8],
-                    backgroundColor: ['#2196F3', '#4CAF50', '#FF5722'],
+                    data: data.datasets[0].data,
+                    backgroundColor: data.datasets[0].backgroundColor,
                     hoverOffset: 4,
                     borderWidth: 0
                 }]
@@ -101,10 +116,23 @@ $(document).ready(function(){
                     },
                     labels:{
                         render: (args)=>{
-                            if(args.value>20){
+                            if(args.value><?php echo $persenFlow;?>){
                                 return args.value + '%';
                             }
                         },
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                //ambil label
+                                var label = context.label || '';
+                                //atur max char
+                                if (label.length > 20) {
+                                    label = label.substr(0, 20) + '...';
+                                }
+                                return label;
+                            }
+                        }
                     }
                 },
             }
@@ -148,7 +176,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 1</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep1;?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +184,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 2</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep2;?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +192,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 3</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep3;?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +200,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 4</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep4;?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +208,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 5</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep5;?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +216,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 6</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep6;?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +224,7 @@ $(document).ready(function(){
                                     <div class="card bg-orange mt-2">
                                         <div class="card-body ps-2 pe-2 pt-3 pb-3" style="height: 100px !important;">
                                             <p class="text-center mb-0 h6 text-white" ><small>LEVEL 7</small></p>
-                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalProposal;?></p>
+                                            <p class="text-center text-white mt-0 mb-0 display-6 font-weight-bold"><?=$totalproposalstep7;?></p>
                                         </div>
                                     </div>
                                 </div>  
@@ -215,30 +243,24 @@ $(document).ready(function(){
                                 </div>
                                 <div class="col-4 d-flex align-items-center">
                                     <div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-biru"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Proposal oleh Tim Pertimbangan</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-hijau"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Klasifikasi sesuai SKPD oleh Tim Pertimbangan</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-merah"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Rekomendasi Dana oleh SKPD</small></p>
-                                            </div>
-                                        </div>
+                                        <?php
+                                        if(!empty($resultArrayFlow['labels'])){
+                                            $x = 0;
+                                            foreach ($resultArrayFlow['labels'] as $key => $label) {
+                                                ?>
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="rounded p-1" style="background-color: <?php echo $colors[$x]; ?>"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <p class="text m-0"><small><?php echo $label; ?></small></p>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                $x++;
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                 </div>
 
@@ -255,45 +277,34 @@ $(document).ready(function(){
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Nama SKPD</th>
-                                    <th class="text-center">Tahapan</th>
+                                    <th class="text-center">Jumlah Proposal</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="">Sekertariat Daerah</td>
-                                    <td class="text-center">0</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td class="text">Dinas Pendidikan, Pemuda, Olah Raga, dan Pariwisata</td>
-                                    <td class="text-center">0</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td class="">Dinas Pertanian, Ketahanan Pangan dan Perikanan</td>
-                                    <td class="text-center">0</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4</td>
-                                    <td class="">Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</td>
-                                    <td class="text-center">0</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">5</td>
-                                    <td class="">Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</td>
-                                    <td class="text-center">0</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">6</td>
-                                    <td class="">Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</td>
-                                    <td class="text-center">0</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">7</td>
-                                    <td class="">Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</td>
-                                    <td class="text-center">0</td>
-                                </tr>
+                            <?php
+                                $no = 1;
+                                if (!empty($resultArray['labels'])) {
+                                    foreach ($resultArray['labels'] as $key => $label) {
+                                        ?>
+                                        <tr>
+                                            <td class="text-center"><?= $no++; ?></td>
+                                            <td class=""><?= $label; ?></td>
+                                            <?php
+                                            $totalProposalSkpd = isset($resultArray['datasets'][0]['data'][$key]) ? $resultArray['datasets'][0]['data'][$key] : 0;
+                                            ?>
+                                            <td class="text-center"><?= $totalProposalSkpd; ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <tr>
+                                        <td colspan="3" class="text-center">Tidak ada data</td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -310,66 +321,49 @@ $(document).ready(function(){
                                 <div class="col-12 mt-1 d-flex align-items-center">
                                     <div class="row">
                                         <div class="col-6">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-biru"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Sekertariat Daerah</small></p>
-                                            </div>
+                                            <?php
+                                            $x = 0;
+                                            $half = ceil(count($resultArray['labels']) / 2);
+                                            foreach ($resultArray['labels'] as $key => $label) {
+                                                if ($key < $half) {
+                                                    ?>
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <div class="rounded p-1" style="background-color: <?php echo $colors[$x]; ?>"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p class="text m-0"><small><?php echo $label; ?></small></p>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    $x++;
+                                                }
+                                            }
+                                            ?>
                                         </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-hijau"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Dinas Pendidikan, Pemuda, Olah Raga, dan Pariwisata</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-merah"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Dinas Pertanian, Ketahanan Pangan dan Perikanan</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-orange"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</small></p>
-                                            </div>
-                                        </div>
-                                        </div>
+
                                         <div class="col-6">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-kuning"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-ungu"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="rounded p-1 bg-hijau-tua"></div>
-                                            </div>
-                                            <div class="col">
-                                                <p class="text m-0"><small>Dinas Sosial, Pemberdayaan Perempuan, dan Perlindungan Anak</small></p>
-                                            </div>
-                                        </div>
+                                            <?php
+                                            foreach ($resultArray['labels'] as $key => $label) {
+                                                if ($key >= $half) {
+                                                    ?>
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <div class="rounded p-1" style="background-color: <?php echo $colors[$x]; ?>"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p class="text m-0"><small><?php echo $label; ?></small></p>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    $x++;
+                                                }
+                                            }
+                                            ?>
                                         </div>
                                     </div>
+
+
 
                                         
                                     </div>
