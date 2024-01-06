@@ -81,7 +81,20 @@ class Auth extends Controller {
                 $phone = $this->request->getPost('phone');
                 $ktp = $this->request->getPost('ktp');
                 $email = $this->request->getPost('email');
+                //cek email apakah sudah terdaftar
+                if($email){
+                    $db = \Config\Database::connect();
+                    $builder = $db->table('user');
+                    $builder->select("id");
+                    $builder->where("email", $email);
+                    $Qcheck = $builder->get();
 
+                    if($Qcheck->getNumRows()){
+                        $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Email sudah terdaftar.']);
+
+                        return redirect()->back();
+                    }
+                }
                 if($uname && $pswd && $repswd && $name && $address && $phone && $ktp && $email){
                     if($pswd == $repswd){
                         $db = \Config\Database::connect();

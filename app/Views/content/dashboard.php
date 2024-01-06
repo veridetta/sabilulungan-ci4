@@ -48,7 +48,10 @@
 $(document).ready(function(){
     if($("#prosesChart").length && $("#prosesChart").is(":visible")){
         var data = <?php echo json_encode($resultArray); ?>;
-        console.log(data);
+        var totaldata = 0;
+        $.each(data.datasets[0].data, function(index, value){
+            totaldata += value;
+        });
         var chrt = $("#prosesChart")[0].getContext("2d");
         var chartId = new Chart(chrt, {
         type: 'doughnut',
@@ -73,8 +76,10 @@ $(document).ready(function(){
                 labels:{
                     render: (args)=>{
                         if(args.value><?php echo $persen;?> ){
-                                    return args.value + '%';
-                                }
+                            //buat persen
+                            let persen = (args.value/totaldata)*100;
+                            return persen.toFixed(2) + '%';;
+                        }
                     },
                 },
                 tooltip: {
@@ -97,6 +102,11 @@ $(document).ready(function(){
     }
     if ($("#presentase").length && $("#presentase").is(":visible")) {
         var data = <?php echo json_encode($resultArrayFlow); ?>;
+        //jumlahkan total data dari data.datasets[0].data
+        var totaldata = 0;
+        $.each(data.datasets[0].data, function(index, value){
+            totaldata += value;
+        });
         var ctx = $("#presentase")[0].getContext("2d");
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -117,7 +127,9 @@ $(document).ready(function(){
                     labels:{
                         render: (args)=>{
                             if(args.value><?php echo $persenFlow;?>){
-                                return args.value + '%';
+                                console.log(args.value+" dari "+totaldata);
+                                let persen = (args.value/totaldata)*100;
+                                return persen.toFixed(2) + '%';;
                             }
                         },
                     },

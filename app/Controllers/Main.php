@@ -94,8 +94,9 @@ class Main extends Controller {
 					->getResult();
 		$totalproposalstep1 = $this->db->table('proposal')
 					->where('YEAR(time_entry)', date('Y'))
-					->where('current_stat', 1)
+					->where('(current_stat = 1 OR current_stat IS NULL)')
 					->countAllResults();
+				
 		$totalproposalstep2 = $this->db->table('proposal')					
 					->where('YEAR(time_entry)', date('Y'))
 					->where('current_stat', 2)
@@ -154,12 +155,9 @@ class Main extends Controller {
 			$totals = [];
 			foreach ($skpds as $key => $row) {
 				$totalProposalSkpd = $this->db->table('proposal')
-					->join('proposal_approval', 'proposal.id = proposal_approval.proposal_id')
-					->where('proposal_approval.flow_id >', 3)
 					->where('proposal.skpd_id', $row->id)
 					->where('YEAR(proposal.time_entry)', date('Y'))
 					->countAllResults();
-			
 				// Jika datanya 0, lewati iterasi
 				if ($totalProposalSkpd == 0) {
 					continue;
@@ -171,7 +169,6 @@ class Main extends Controller {
 				$resultArray['datasets'][0]['data'][] = $totalProposalSkpd;
 				$resultArray['datasets'][0]['backgroundColor'][] = $colors[$colorIndex];
 			}
-			
 			// Urutkan array total proposal secara descending
 			arsort($totals);
 			// Ambil SKPD dengan total proposal paling besar
@@ -197,14 +194,22 @@ class Main extends Controller {
 			]
 		];
 		$totalsFlow = [];
-		
+		$index =0;
 		foreach ($flows as $key => $row) {
-			$totalProposalFlow = $this->db->table('proposal')
+			if ($row->id == 1) {
+				$totalProposalFlow = $this->db->table('proposal')
 				->join('proposal_approval', 'proposal.id = proposal_approval.proposal_id')
-				->where('proposal_approval.flow_id >', 3)
+				->where('(current_stat = '.$row->id.' OR current_stat IS NULL)')
+				->where('YEAR(proposal.time_entry)', date('Y'))
+				->countAllResults();
+			}else{
+				$totalProposalFlow = $this->db->table('proposal')
+				->join('proposal_approval', 'proposal.id = proposal_approval.proposal_id')
 				->where('proposal.current_stat', $row->id)
 				->where('YEAR(proposal.time_entry)', date('Y'))
 				->countAllResults();
+			}
+			
 		
 			// Jika datanya 0, lewati iterasi
 			if ($totalProposalFlow == 0) {
@@ -215,7 +220,8 @@ class Main extends Controller {
 			$totalsFlow[$row->id] = $totalProposalFlow;
 			$resultArrayFlow['labels'][] = $row->name;
 			$resultArrayFlow['datasets'][0]['data'][] = $totalProposalFlow;
-			$resultArrayFlow['datasets'][0]['backgroundColor'][] = $colors[$colorIndex];
+			$resultArrayFlow['datasets'][0]['backgroundColor'][] = $colors[$index];
+			$index++;
 		}
 		
 		// Urutkan array total proposal secara descending

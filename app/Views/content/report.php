@@ -130,14 +130,10 @@
 
                 $Qbesar = $db->query("SELECT value FROM proposal_checklist WHERE `proposal_id`='$list->id' AND checklist_id IN (26,28)"); $besar = $Qbesar->getResult();
                 echo '<tr>
-                        <td>'; 
-                        if($_SESSION['sabilulungan']['role']==9){ echo '<a href="'.site_url('hibah/edit/'.$list->id).'">'.$list->judul.'</a>'; 
-                        }else{
-                             echo '<a href="'.site_url('detail/'.$list->id).'">'.$list->judul.'</a>'; echo '</td>
-                            <td>Rp. '.number_format($mohon[0]->mohon,0,",",".").',-</td>
-                            <td>'; if(isset($besar[0]->value)) echo 'Rp. '.number_format($besar[0]->value,0,",",".").',-'; else echo '-'; echo '</td>
-                             <td>'; if(isset($besar[1]->value)) echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; else echo '-'; echo '</td>';
-                        }
+                        <td>'; if($_SESSION['sabilulungan']['role']==9) echo '<a href="'.site_url('hibah/edit/'.$list->id).'">'.$list->judul.'</a>'; else echo '<a href="'.site_url('detail/'.$list->id).'">'.$list->judul.'</a>'; echo '</td>
+                        <td>Rp. '.number_format($mohon[0]->mohon,0,",",".").',-</td>
+                        <td>'; if(isset($besar[0]->value)) echo 'Rp. '.number_format($besar[0]->value,0,",",".").',-'; else echo '-'; echo '</td>
+                        <td>'; if(isset($besar[1]->value)) echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; else echo '-'; echo '</td>';
                         
                         if($list->current_stat==NULL && $_SESSION['sabilulungan']['role']==5 || $list->current_stat==NULL && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==NULL && $_SESSION['sabilulungan']['role']==9){
                             if($list->current_stat!==NULL){
@@ -163,8 +159,7 @@
                             echo '<td style="text-align:center">'.$status.'</td>';
                             if($_SESSION['sabilulungan']['role']==7 || $_SESSION['sabilulungan']['role']==9){
                                 if($_SESSION['sabilulungan']['role']==9){
-                                    echo '<td style="text-align:center">'; 
-                                    
+                                    echo '<td style="text-align:center">';
                                     if(isset($list->nphd)) echo '<a href="'.site_url('admin/edit/'.$list->id).'">EDIT</a>'; 
                                     
                                     else echo '<a href="'.site_url('admin/nphd/'.$list->id).'">'.$status.'</a>'; echo '</td>';
@@ -433,7 +428,6 @@
                         }
 
                         elseif($list->current_stat==7 && $_SESSION['sabilulungan']['role']==7 || $list->current_stat==7 && $_SESSION['sabilulungan']['role']==9){
-                            echo "sini";
                             if($_SESSION['sabilulungan']['role']==9){
                                 echo '<td style="text-align:center"><a href="'.site_url('tatausaha/edit/'.$list->id).'">EDIT</a></td>';
                                 echo '<td style="text-align:center"><a href="'.site_url('walikota/edit/'.$list->id).'">EDIT</a></td>';
@@ -444,7 +438,6 @@
                                 echo '<td style="text-align:center"><a href="'.site_url('walikota/view/'.$list->id).'">EDIT</a></td>';
                             }else{
                                 $Qstat = $db->query("SELECT action FROM proposal_approval WHERE `proposal_id`='$list->id'");
-                            
                                 foreach($Qstat->getResult() as $stat){
                                     if($stat->action==1) $status = '<a style="color:#00923f;cursor:text">DISETUJUI</a>'; elseif($stat->action==2) $status = '<a style="color:#F00;cursor:text">DITOLAK</a>';
 

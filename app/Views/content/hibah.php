@@ -120,9 +120,10 @@ break;
 default:
 //batas waktu pendaftaran adalah bulan januari dan februari
 $currentMonth = date('m');
+//hilangkan 0 pada bulan
+$currentMonth = ltrim($currentMonth, '0');
 $session = \Config\Services::session();
 $year = date('Y');
-
 $Qlist = $db->table('proposal')
     ->select('proposal.*, proposal_approval.time_entry')
     ->join('proposal_approval', 'proposal_approval.proposal_id = proposal.id')
@@ -169,11 +170,99 @@ if($currentMonth > 2){
         </div>
         </div>
         <?php
-    };?>
+    }else{  
+        ?>
+        <div role="main" class="content-main" style="margin:120px 0 50px">
+            <div class="register-page wrapper-half">
+                <h1 class="page-title page-title-border">Mendaftar Hibah Bansos</h1>
+                <?php
+                if(isset($_SESSION['notify'])){
+                    echo '<div class="alert-bar alert-bar-'.$_SESSION['notify']['type'].'" style="width:100%">'.$_SESSION['notify']['message'].'</div>';
+                    unset($_SESSION['notify']);
+                }            
+                ?> 
+                <form class="form-global" method="post" action="<?php echo site_url('process/hibah/daftar') ?>" enctype="multipart/form-data">
+                    <fieldset>
+                        <?php if($_SESSION['sabilulungan']['role']!=6){ ?>
+                        <div class="control-group">
+                            <label class="control-label" for="">Tanggal Kegiatan</label>
+                            <div class="controls">
+                                <input id="datepicker-tgl" type="text" name="tanggal" required>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <div class="control-group">
+                            <label class="control-label" for="">Nama (individu atau organisasi)</label>
+                            <div class="controls">
+                                <input type="text" name="name" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Alamat</label>
+                            <div class="controls">
+                                <textarea name="address" required></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Judul Kegiatan</label>
+                            <div class="controls">
+                                <input type="text" name="judul" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Latar Belakang</label>
+                            <div class="controls">
+                                <textarea name="latar" required></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Maksud dan Tujuan</label>
+                            <div class="controls">
+                                <textarea name="maksud" required></textarea>
+                            </div>
+                        </div>
+                        <!-- <div class="control-group">
+                            <label class="control-label" for="">Deskripsi Kegiatan</label>
+                            <div class="controls">
+                                <textarea name="kegiatan" required></textarea>
+                            </div>
+                        </div> -->
+                        <div class="control-group">
+                            <label class="control-label" for="">Proposal</label>
+                            <div class="controls file">
+                                <input type="file" name="proposal" accept="application/pdf" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Dana</label>
+                            <div class="controls file">
+                                <input type="text" name="deskripsi[]" placeholder="Deskripsi">
+                                <input type="number" name="jumlah[]" placeholder="Jumlah">
+                            </div>
+                            <a class="dana" href="#">Tambah Dana</a>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Foto</label>
+                            <div class="controls file">
+                                <input type="file" accept="image/*" name="foto[]">
+                            </div>
+                            <a class="link" href="#">Tambah Foto</a>
+                        </div>
+                        <div class="control-actions clearfix">
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
+                            <input type="hidden" name="role_id" value="<?php echo $_SESSION['sabilulungan']['role']; ?>">
+                            <button class="btn-red btn-plain btn" type="submit">Daftar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- wrapper-half -->
+        </div>
+        <?php
+        };?>
 <?php
-}else{
+}else{  
 ?>
-
 <div role="main" class="content-main" style="margin:120px 0 50px">
     <div class="register-page wrapper-half">
         <h1 class="page-title page-title-border">Mendaftar Hibah Bansos</h1>
