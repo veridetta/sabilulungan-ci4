@@ -5,6 +5,8 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use CodeIgniter\Database\BaseBuilder; // Import the BaseBuilder class
+use DateTime;
 
 session();
 
@@ -307,6 +309,19 @@ class Pdf extends Controller {
 	}
 	public function generate_dnc($kategori=0, $dari='', $sampai='', $skpd=0)
 	{
+        
+        //ubah ke format 2023-11-23
+
+        // Ubah $dari menjadi awal tahun
+        $dateStart = new DateTime();
+        $dateStart->setDate($dari, 1, 1); // Set the date to January 1 of $dari
+        $dari = $dateStart->format('Y-m-d'); // Format the date
+
+        // Ubah $sampai menjadi akhir tahun
+        $dateEnd = new DateTime();
+        $dateEnd->setDate($sampai, 12, 31); // Set the date to December 31 of $sampai
+        $sampai = $dateEnd->format('Y-m-d'); // Format the date
+        
 		// if($dari!='' && $sampai!='' && $skpd!=0){
 		// 	// $Qskpd = $this->db->query("SELECT name FROM skpd WHERE id='$skpd'");
 		// 	// $skpd = $Qskpd->result_object(); $name = $skpd[0]->name;			
@@ -380,12 +395,24 @@ class Pdf extends Controller {
                 </thead>
                 <tbody>
                     <?php
-                    // if($dari!='' && $sampai!='' && $skpd!=0) $Qlist = $this->db->select("id, name, address, maksud_tujuan")->from('proposal')->where('time_entry >=', $dari)->where('time_entry <=', $sampai)->where('skpd_id', $skpd)->order_by('id', 'DESC')->get();                    
-                    // else $Qlist = $this->db->select("id, name, address, maksud_tujuan")->from('proposal')->order_by('id', 'DESC')->get();
+                    if ($dari != '' && $sampai != '' && $skpd != 0) {
+                        $Qlist = $this->db->table('proposal') // Use the table() method instead of select()
+                            ->select("id, name, address, maksud_tujuan")
+                            ->where('time_entry >=', $dari)
+                            ->where('time_entry <=', $sampai)
+                            ->where('skpd_id', $skpd)
+                            ->orderBy('id', 'DESC')
+                            ->get();
+                    } else {
+                        $Qlist = $this->db->table('proposal') // Use the table() method instead of select()
+                            ->select("id, name, address, maksud_tujuan")
+                            ->orderBy('id', 'DESC')
+                            ->get();
+                    }
 
                     if($kategori || $dari || $sampai || $skpd){
                         $where = '';
-
+                        //ubah tahun daru dan sampai ke timestamp
                         //kategori
                         if($kategori && !$dari && !$sampai && !$skpd){
                             if($kategori=='all') $where .= "";
@@ -444,21 +471,28 @@ class Pdf extends Controller {
                             else $where .= "WHERE type_id = $kategori AND time_entry >= '$dari' AND time_entry <= '$sampai' AND skpd_id = $skpd";
                         }
 
-                        $Qlist = $this->db->query("SELECT id, name, address, maksud_tujuan FROM proposal $where ORDER BY id DESC");
-                    }else $Qlist = $this->db->table('proposal')->select("id, name, address, maksud_tujuan")->orderBy('id', 'DESC')->get()->getResult();
+                        $Qlist = $this->db->query("SELECT id, name, address, maksud_tujuan FROM proposal $where ORDER BY id DESC")->getResultArray();
+                        } else {
+                            $Qlist = $this->db->table('proposal')->select("id, name, address, maksud_tujuan")->orderBy('id', 'DESC')->get()->getResultArray();
+                        }
 
-                    if(count($Qlist)){
+                    if($Qlist){
                         $i = 1; $total_mohon = 0; $total_evaluasi = 0; $total_timbang = 0;
                         foreach($Qlist as $list){
-                            $Qmohon = $this->db->query("SELECT SUM(amount) AS mohon FROM proposal_dana WHERE `proposal_id`='$list->id'"); $mohon = $Qmohon->getResult(); 
+                            $id = $list['id'];
+                            $list_name = $list['name'];
+                            $list_address = $list['address'];
+                            $list_maksud_tujuan = $list['maksud_tujuan'];
 
-                            $Qbesar = $this->db->query("SELECT value FROM proposal_checklist WHERE `proposal_id`='$list->id' AND checklist_id IN (26,28,29)"); $besar = $Qbesar->getResult(); 
+                            $Qmohon = $this->db->query("SELECT SUM(amount) AS mohon FROM proposal_dana WHERE `proposal_id`='$id'"); $mohon = $Qmohon->getResult(); 
+
+                            $Qbesar = $this->db->query("SELECT value FROM proposal_checklist WHERE `proposal_id`='$id' AND checklist_id IN (26,28,29)"); $besar = $Qbesar->getResult(); 
 
                             echo '<tr>
                                     <td>'.$i.'</td>
-                                    <td>'.$list->name.'</td>
-                                    <td>'.$list->address.'</td>
-                                    <td>'.$list->maksud_tujuan.'</td>
+                                    <td>'.$list_name.'</td>
+                                    <td>'.$list_address.'</td>
+                                    <td>'.$list_maksud_tujuan.'</td>
                                     <td>'; if(isset($mohon[0]->mohon)){ echo 'Rp. '.number_format($mohon[0]->mohon,0,",",".").',-'; $total_mohon += $mohon[0]->mohon; }else echo '-'; echo '</td>
                                     <td>'; if(isset($besar[0]->value)){ echo 'Rp. '.number_format($besar[0]->value,0,",",".").',-'; $total_evaluasi += $besar[0]->value; }else echo '-'; echo '</td>
                                     <td>'; if(isset($besar[1]->value)){ echo 'Rp. '.number_format($besar[1]->value,0,",",".").',-'; $total_timbang += $besar[1]->value; }else echo '-'; echo '</td>

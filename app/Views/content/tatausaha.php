@@ -185,6 +185,9 @@ case 'periksa':
             <h3 style="color:#ec7404">Keterangan</h3>
             <textarea rows="5" name="keterangan"></textarea>
 
+            <h3 style="color:#ec7404">Keterangan Penolakan (jika ditolak)</h3>
+            <textarea rows="5" name="penolakan"></textarea>
+
             <div class="control-actions">
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
                 <input type="hidden" name="role_id" value="<?php echo $_SESSION['sabilulungan']['role']; ?>">

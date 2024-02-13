@@ -496,11 +496,18 @@ class Process extends Controller {
 			$role_id = $this->request->getPost('role_id');
 
 			if($user_id && $role_id){
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				$status = $this->request->getPost('lanjut') ? 2 : ($this->request->getPost('tolak') ? 1 : 0);
 				if($status == 2){
 					$db->table('proposal')->update(['current_stat' => 1], ['id' => $dx]);
+					$db->table('proposal_approval_history')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => $status, 'role_id' => $role_id, 'action' => 2]);
+					//cek penolakan
+					if($this->request->getPost('penolakan') != '') {
+						$db->table('penolakan')->insert(['proposal_id' => $dx, 'flow_id' => 2,  'keterangan' => $this->request->getPost('penolakan')]);
+					}
 				}else{
-					$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);
+					$db->table('proposal')->update(['current_stat' => 3], ['id' => $dx]);
+					$db->table('proposal_approval_history')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => $status, 'role_id' => $role_id, 'action' => 1]);
+					
 				}
 
 				if($this->request->getPost('keterangan') != '') {
@@ -513,8 +520,7 @@ class Process extends Controller {
 				} else {
 					$db->table('proposal_approval')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => 2, 'action' => $status]);
 				}
-
-				$db->table('proposal_approval_history')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => 2, 'role_id' => $role_id, 'action' => $status]);
+			
 				$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'walikota_periksa', 'id' => $dx, 'ip' => $this->request->getIPAddress()]);
 
 				$session->setFlashdata('notify', ['type' => 'success', 'message' => 'Pemeriksaan hibah bansos berhasil.']);
@@ -532,9 +538,30 @@ class Process extends Controller {
 				$role_id = $this->request->getPost('role_id');
 
 			if($user_id && $role_id){
+
+				//mulai disini
+				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+
+				if($status==2){
+					$db->table('proposal')->update(['current_stat' => 1], ['id' => $dx]);
+					$db->table('proposal_approval_history')->update(['action' => 2], ['proposal_id' => $dx, 'flow_id' => 1, 'action' => 1]);
+					//cek penolakan
+					if($this->request->getPost('penolakan') != '') {
+						$db->table('penolakan')->insert(['proposal_id' => $dx, 'flow_id' => 2,  'keterangan' => $this->request->getPost('penolakan')]);
+					}
+				}else{
+					$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);	
+					//update proposal approval history where action 2 menjadi 1
+					// $db->table('proposal_approval_history')->update(['action' => 1], ['proposal_id' => $dx, 'flow_id' => 2, 'action' => 2]);
+					//delete proposal approval history where flow_id 2 dan action 2
+					$db->table('proposal_approval_history')->delete(['flow_id' => 2, 'action' => 2, 'proposal_id' => $dx]);
+					//end
+				}
+
 				if($this->request->getPost('keterangan') != '') {
 					$db->table('proposal_checklist')->update(['value' => $this->request->getPost('keterangan')], ['proposal_id' => $dx, 'checklist_id' => 14]);
 				}
+			
 
 				$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'walikota_periksa_edit', 'id' => $dx, 'ip' => $this->request->getIPAddress()]);
 
@@ -620,27 +647,35 @@ class Process extends Controller {
 			
 
 			if($user_id && $role_id){
-				$status = $this->request->getPost('lanjut') ? 1 : ($this->request->getPost('tolak') ? 2 : 0);
+				//START ADD
+				$status = $this->request->getPost('lanjut') ? 3 : ($this->request->getPost('tolak') ? 2 : 0);
 				if($status == 2){
 					$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);
+					$db->table('proposal_approval_history')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => $status, 'role_id' => $role_id, 'action' => 2]);
+					//cek penolakan
+					if($this->request->getPost('penolakan') != '') {
+						$db->table('penolakan')->insert(['proposal_id' => $dx, 'flow_id' => 2,  'keterangan' => $this->request->getPost('penolakan')]);
+					}
 				}else{
-					$db->table('proposal')->update(['current_stat' => 3], ['id' => $dx]);
+					$db->table('proposal')->update(['current_stat' => 4], ['id' => $dx]);
+					$db->table('proposal_approval_history')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => $status, 'role_id' => $role_id, 'action' => 1]);
 				}
+
+				//END
 
 				if($this->request->getPost('skpd')){
 					$db->table('proposal')->update(['skpd_id' => $this->request->getPost('skpd')], ['id' => $dx]);
 					$db->table('proposal_checklist')->insert(['proposal_id' => $dx, 'checklist_id' => 31, 'value' => $this->request->getPost('skpd')]);
 				}
 
-
 				$Qcheck = $db->table('proposal_approval')->select("user_id")->where('proposal_id', $dx)->where('flow_id', 3)->get();
 				if($Qcheck->getResult()) {
-					$db->table('proposal_approval')->update(['user_id' => $user_id, 'action' => $status], ['proposal_id' => $dx, 'flow_id' => 3]);
+					$db->table('proposal_approval')->update(['user_id' => $user_id, 'action' => $status], ['proposal_id' => $dx, 'flow_id' => $status]);
 				} else {
 					$db->table('proposal_approval')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => 3, 'action' => $status]);
 				}
 
-				$db->table('proposal_approval_history')->insert(['proposal_id' => $dx, 'user_id' => $user_id, 'flow_id' => 3, 'role_id' => $role_id, 'action' => $status]);
+				
 				$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'pertimbangan_periksa', 'id' => $dx, 'ip' => $this->request->getIPAddress()]);
 
 				$session->setFlashdata('notify', ['type' => 'success', 'message' => 'Pemeriksaan hibah bansos berhasil.']);
@@ -662,6 +697,25 @@ class Process extends Controller {
 					$db->table('proposal')->update(['skpd_id' => $this->request->getPost('skpd')], ['id' => $dx]);
 					$db->table('proposal_checklist')->update(['value' => $this->request->getPost('skpd')], ['proposal_id' => $dx, 'checklist_id' => 31]);
 				}
+				//mulai disini (EDIT)
+				$status = $this->request->getPost('lanjut') ? 3 : ($this->request->getPost('tolak') ? 2 : 0);
+				if($status==2){
+					$db->table('proposal')->update(['current_stat' => 2], ['id' => $dx]);
+					$db->table('proposal_approval_history')->update(['action' => 2], ['proposal_id' => $dx, 'flow_id' => 2, 'action' => 1]);
+					//cek penolakan
+					if($this->request->getPost('penolakan') != '') {
+						$db->table('penolakan')->insert(['proposal_id' => $dx, 'flow_id' => 3,  'keterangan' => $this->request->getPost('penolakan')]);
+					}
+				}else{
+					$db->table('proposal')->update(['current_stat' => 3], ['id' => $dx]);	
+					//update proposal approval history where action 2 menjadi 1
+					// $db->table('proposal_approval_history')->update(['action' => 1], ['proposal_id' => $dx, 'flow_id' => 2, 'action' => 2]);
+					//delete proposal approval history where flow_id 2 dan action 2
+					$db->table('proposal_approval_history')->delete(['flow_id' => 3, 'action' => 2, 'proposal_id' => $dx]);
+					//end
+				}
+
+				//END
 
 				$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'pertimbangan_periksa_edit', 'id' => $dx, 'ip' => $this->request->getIPAddress()]);
 
@@ -1656,11 +1710,11 @@ class Process extends Controller {
 				$content = $this->request->getPost('content');
 				$session = \Config\Services::session();
 				if($content){
-					$db->table('cms')->update(['content' => $content], ['page_id' => 'tentang', 'sequence' => $request->getPost('sequence0')]);
+					$db->table('cms')->update(['content' => $content], ['page_id' => 'tentang', 'sequence' => $this->request->getPost('sequence0')]);
 				
-					$files = $request->getFiles();
-				
-					if(isset($files['image1'])){
+					$files = $this->request->getFiles();
+					//dd nama image1
+					if($files['image1']->getName() !==''){
 						$path = './media/cms/';
 						$new_foto_name = $files['image1']->move($path);
 				
@@ -1668,13 +1722,13 @@ class Process extends Controller {
 							$session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Terjadi kesalahan saat mengunggah gambar, silakan ulangi lagi.']);
 							return redirect()->back();
 						}else{
-							unlink($path.$request->getPost('old_image1'));
+							unlink($path.$this->request->getPost('old_image1'));
 						}
 				
-						$db->table('cms')->update(['content' => $new_foto_name], ['page_id' => 'tentang', 'sequence' => $request->getPost('sequence1')]);
+						$db->table('cms')->update(['content' => $new_foto_name], ['page_id' => 'tentang', 'sequence' => $this->request->getPost('sequence1')]);
 					}
 				
-					if(isset($files['image2'])){
+					if($files['image2']->getName() !==''){
 						$path = './media/cms/';
 						$new_foto_name = $files['image2']->move($path);
 				
@@ -1682,13 +1736,13 @@ class Process extends Controller {
 							$session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Terjadi kesalahan saat mengunggah gambar, silakan ulangi lagi.']);
 							return redirect()->back();
 						}else{
-							unlink($path.$request->getPost('old_image2'));
+							unlink($path.$this->request->getPost('old_image2'));
 						}
 				
-						$db->table('cms')->update(['content' => $new_foto_name], ['page_id' => 'tentang', 'sequence' => $request->getPost('sequence2')]);
+						$db->table('cms')->update(['content' => $new_foto_name], ['page_id' => 'tentang', 'sequence' => $this->request->getPost('sequence2')]);
 					}
 				
-					$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'tentang', 'ip' => $request->getIPAddress()]);
+					$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'tentang', 'ip' => $this->request->getIPAddress()]);
 				
 					$session->setFlashdata('notify', ['type' => 'success', 'message' => 'Tentang Sabilulungan berhasil diedit.']);
 				

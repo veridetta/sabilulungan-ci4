@@ -205,10 +205,14 @@ $Qdetail = $db->query("SELECT a.name, a.judul, a.latar_belakang, SUM(b.amount) A
                         }
 
                         $Qlist = $db->query("SELECT id, name, address, maksud_tujuan FROM proposal $where ORDER BY id DESC LIMIT $position,$limit");
-                    }else $Qlist = $db->table('proposal')->select("id, name, address, maksud_tujuan")->orderBy('id', 'DESC')->limit($limit, $position);
-                    if(count($Qlist->get()->getResultArray())){
+                    }else{ $Qlist = $db->table('proposal')->select("id, name, address, maksud_tujuan")->orderBy('id', 'DESC')->limit($limit, $position);
+                    }
+                    //hitung qlist
+                
+                    $hitung_qlist = $Qlist->getNumRows();
+                    if($hitung_qlist > 0){
                         $i = 1;
-                        foreach($Qlist->get()->getResult() as $list){
+                        foreach($Qlist->getResult() as $list){
                             $Qmohon = $db->query("SELECT SUM(amount) AS mohon FROM proposal_dana WHERE `proposal_id`='$list->id'"); $mohon = $Qmohon->getResult(); 
 
                             $Qbesar = $db->query("SELECT value FROM proposal_checklist WHERE `proposal_id`='$list->id' AND checklist_id IN (26,28,29)"); $besar = $Qbesar->getResult(); 

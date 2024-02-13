@@ -65,11 +65,13 @@ $Qket = $db->query("SELECT value AS keterangan FROM proposal_checklist WHERE pro
                     ?>
                 </ul>
             </div>
-
+            <h3 style="color:#ec7404">Keterangan Penolakan (jika ditolak)</h3>
+            <textarea rows="5" name="penolakan"></textarea>
             <div class="control-actions">
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
                 <input type="hidden" name="role_id" value="<?php echo $_SESSION['sabilulungan']['role']; ?>">
                 <input type="submit" name="lanjut" class="btn-red btn-plain btn" style="display:inline" value="Disposisi ke SKPD" />
+                <input type="submit" name="tolak" class="btn-red btn-plain btn" style="display:inline" value="Ditolak" />
                 <!-- <input type="submit" name="tolak" class="btn-red btn-plain btn" style="display:inline" value="Ditolak" /> -->
                 <a href="<?php echo site_url('report') ?>" class="btn-grey btn-plain btn" style="display:inline">Kembali</a>
             </div>
@@ -141,6 +143,7 @@ $check = $Qcheck->getResult();
 
                 <a target="_blank" <?php if(isset($check[1]->value)) echo ' href="'.$view.'"'; else echo ' onclick="alert(\'Silahkan Verifikasi Formulir Terlebih Dahulu.\');"'; ?> class="btn-orange btn-plain btn" style="display:inline">Preview Formulir</a>
                 <a target="_blank" <?php if(isset($check[1]->value)) echo ' href="'.$export.'"'; else echo ' onclick="alert(\'Silahkan Verifikasi Formulir Terlebih Dahulu.\');"'; ?> class="btn-orange btn-plain btn" style="display:inline">Cetak Formulir</a>
+                
                 <a href="<?php echo site_url('report') ?>" class="btn-grey btn-plain btn" style="display:inline">Kembali</a>
             </div>
         </form>

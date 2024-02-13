@@ -34,8 +34,17 @@ $Qket = $db->query("SELECT value AS keterangan FROM proposal_checklist WHERE pro
             <p><?php echo 'Rp. '.number_format($detail[0]->nominal,0,",",".").',-' ?></p>
             <p class="label">Keterangan dari TU</p>
             <p><?php if(isset($ket[0]->keterangan)) echo $ket[0]->keterangan; else echo '-'; ?></p>
+            <?php
+            $Qpenolakan = $db->query("SELECT keterangan AS penolakan FROM penolakan WHERE proposal_id='$dx' and flow_id='2'"); $penolakan = $Qpenolakan->getResult();
+            if(count($penolakan)){
+                echo '<p class="label">Keterangan Penolakan</p>
+                <p>'.$penolakan[0]->penolakan.'</p>';
+            }
+            ?>
             <h3 style="color:#ec7404">Keterangan</h3>
             <textarea rows="5" name="keterangan"></textarea>
+            <h3 style="color:#ec7404">Keterangan Penolakan (jika ditolak)</h3>
+            <textarea rows="5" name="penolakan"></textarea>
 
             <div class="control-actions">
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
@@ -125,6 +134,8 @@ case 'setuju':
 
             <h3 style="color:#ec7404">Keterangan</h3>
             <textarea rows="5" name="keterangan"></textarea>
+            <h3 style="color:#ec7404">Keterangan Penolakan (jika ditolak)</h3>
+            <textarea rows="5" name="penolakan"></textarea>
 
             <div class="control-actions">
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
@@ -172,14 +183,23 @@ $Qedit = $db->query("SELECT checklist_id, value FROM proposal_checklist WHERE `p
             <p><?php echo 'Rp. '.number_format($detail[0]->nominal,0,",",".").',-' ?></p>
             <p class="label">Keterangan dari TU</p>
             <p><?php if(isset($ket[0]->keterangan)) echo $ket[0]->keterangan; else echo '-'; ?></p>
+            <?php
+            $Qpenolakan = $db->query("SELECT keterangan AS penolakan FROM penolakan WHERE proposal_id='$dx' and flow_id='2'"); $penolakan = $Qpenolakan->getResult();
+            if(count($penolakan)){
+                echo '<p class="label">Keterangan Penolakan</p>
+                <p>'.$penolakan[0]->penolakan.'</p>';
+            }
+            ?>
             <h3 style="color:#ec7404">Keterangan</h3>
             <textarea rows="5" name="keterangan"><?php if(isset($edit[0]->value)) echo $edit[0]->value; ?></textarea>
+            <h3 style="color:#ec7404">Keterangan Penolakan (jika ditolak)</h3>
+            <textarea rows="5" name="penolakan"></textarea>
 
             <div class="control-actions">
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
                 <input type="hidden" name="role_id" value="<?php echo $_SESSION['sabilulungan']['role']; ?>">
                 <input type="submit" name="lanjut" class="btn-red btn-plain btn" style="display:inline" value="Simpan" />
-                <!-- <input type="submit" name="tolak" class="btn-red btn-plain btn" style="display:inline" value="Ditolak" /> -->
+                <input type="submit" name="tolak" class="btn-red btn-plain btn" style="display:inline" value="Ditolak" /> 
                 <a href="<?php echo site_url('report') ?>" class="btn-grey btn-plain btn" style="display:inline">Kembali</a>
             </div>
         </form>
@@ -270,7 +290,7 @@ $Qedit = $db->query("SELECT checklist_id, value FROM proposal_checklist WHERE `p
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['sabilulungan']['uid']; ?>">
                 <input type="hidden" name="role_id" value="<?php echo $_SESSION['sabilulungan']['role']; ?>">
                 <input type="submit" name="lanjut" class="btn-red btn-plain btn" style="display:inline" value="Simpan" />
-                <!-- <input type="submit" name="tolak" class="btn-red btn-plain btn" style="display:inline" value="Ditolak" /> -->
+                <input type="submit" name="tolak" class="btn-red btn-plain btn" style="display:inline" value="Ditolak" />
                 <a href="<?php echo site_url('report') ?>" class="btn-grey btn-plain btn" style="display:inline">Kembali</a>
             </div>
         </form>

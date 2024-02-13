@@ -53,6 +53,11 @@ $routes->get('/login', 'Auth::login');
 $routes->post('/user/(:any)', 'Auth::user/$1');
 $routes->post('/user/(:any)/(:any)', 'Auth::user/$1/$2');
 
+$routes->get('/confirm', 'Auth::confirm');
+$routes->post('/confirm', 'Auth::confirm_post');
+$routes->get('/resend', 'Auth::resend');
+$routes->post('/resend', 'Auth::resend_post');
+
 //logout
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/logout/(:any)', 'Auth::logout/$1');

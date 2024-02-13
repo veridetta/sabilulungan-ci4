@@ -1,0 +1,1233 @@
+INFO - 2024-02-13 12:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:27:16 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:27:20 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'ci_sabilulungan', 3306, '', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Views\content\home.php(8): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(228): include('E:\\WEB\\LARAGON\\...')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Common.php(1190): CodeIgniter\View\View->render('content/home', Array, true)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Main.php(26): view('content/home', Array)
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Main->index()
+#10 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+#11 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Views\content\home.php(8): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(228): include('E:\\WEB\\LARAGON\\...')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Common.php(1190): CodeIgniter\View\View->render('content/home', Array, true)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Main.php(26): view('content/home', Array)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Main->index()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+#10 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#13 {main}
+CRITICAL - 2024-02-13 12:27:20 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `cms`
+WHERE `page_id` = :page_id:
+ORDER BY `sequence` ASC', [...], false)
+ 3 APPPATH\Views\content\home.php(8): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\View\View.php(228): include('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Views\\content\\home.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/home', [], true)
+ 7 APPPATH\Controllers\Main.php(26): view('content/home', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Main->index()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Main))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:31:54 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:32:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:32:19 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:32:29 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:32:29 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:32:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:32:34 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:32:47 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:32:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:32:55 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:32:55 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH\Views\content\tapd.php on line 209.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:33:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:33:41 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:33:42 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH\Views\content\tapd.php on line 209.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:33:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:33:58 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:33:58 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+in APPPATH\Views\content\tapd.php on line 209.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:34:21 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:34:22 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+in APPPATH\Views\content\tapd.php on line 209.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:36:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:36:03 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:36:03 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+in APPPATH\Views\content\tapd.php on line 210.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:36:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:36:40 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:37:06 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:37:06 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
+in APPPATH\Views\content\tapd.php on line 211.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:37:11 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:37:11 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
+in APPPATH\Views\content\tapd.php on line 211.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:38:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:38:44 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:38:44 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH\Views\content\tapd.php on line 212.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:38:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:38:53 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:38:53 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH\Views\content\tapd.php on line 215.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('content/tapd', [], true)
+ 4 APPPATH\Controllers\HasLogin.php(304): view('content/tapd', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\HasLogin->tapd('generate')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HasLogin))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:39:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:39:10 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\HasLogin.php(20): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\HasLogin->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:39:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:39:20 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:39:21 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT id, name...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT id, name...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT id, name...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name...')
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#9 {main}
+CRITICAL - 2024-02-13 12:39:21 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name, address, maksud_tujuan FROM proposal WHERE type_id = 1 AND time_entry >= \'2024\' AND time_entry <= \'2024\' ORDER BY id DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:39:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:39:22 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:39:22 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT id, name...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT id, name...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT id, name...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name...')
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#9 {main}
+CRITICAL - 2024-02-13 12:39:22 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name, address, maksud_tujuan FROM proposal WHERE type_id = 1 AND time_entry >= \'2024\' AND time_entry <= \'2024\' ORDER BY id DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:39:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:39:34 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:39:34 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT id, name...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT id, name...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT id, name...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name...')
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#9 {main}
+CRITICAL - 2024-02-13 12:39:34 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name, address, maksud_tujuan FROM proposal WHERE type_id = 1 AND time_entry >= \'2024\' AND time_entry <= \'2024\' ORDER BY id DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:40:05 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:40:05 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT id, name...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT id, name...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT id, name...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name...')
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#9 {main}
+CRITICAL - 2024-02-13 12:40:05 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Pdf.php(447): CodeIgniter\Database\BaseConnection->query('SELECT id, name, address, maksud_tujuan FROM proposal WHERE type_id = 1 AND time_entry >= \'2024\' AND time_entry <= \'2024\' ORDER BY id DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:41:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:41:35 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:42:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:42:35 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:43:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:43:45 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:43:45 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+in APPPATH\Controllers\Pdf.php on line 383.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:44:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:44:28 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:44:28 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+in APPPATH\Controllers\Pdf.php on line 383.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:45:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:45:18 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:45:18 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(391): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 12:45:18 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(391): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:46:42 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:46:42 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(391): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 12:46:42 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(391): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:46:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:46:56 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:46:56 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(391): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 12:46:56 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(391): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:49:31 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:49:52 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 12:49:52 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '1707855840' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT id, name...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT id, name...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT id, name...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(462): CodeIgniter\Database\BaseConnection->query('SELECT id, name...')
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', 1707855840, 1707855840, 'all')
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#9 {main}
+CRITICAL - 2024-02-13 12:49:52 --> Incorrect TIMESTAMP value: '1707855840'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Pdf.php(462): CodeIgniter\Database\BaseConnection->query('SELECT id, name, address, maksud_tujuan FROM proposal WHERE type_id = 1 AND time_entry >= \'1707855840\' AND time_entry <= \'1707855840\' ORDER BY id DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', 1707855840, 1707855840, 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:53:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:53:40 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:53:50 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 12:53:50 --> count(): Argument #1 ($value) must be of type Countable|array, CodeIgniter\Database\MySQLi\Result given
+in APPPATH\Controllers\Pdf.php on line 468.
+ 1 APPPATH\Controllers\Pdf.php(468): count(Object(CodeIgniter\Database\MySQLi\Result))
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-02-13', '2024-02-13', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:54:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:54:24 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:54:43 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 12:55:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 12:55:07 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(23): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:07:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:07:33 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 13:07:33 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 13:07:33 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:07:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:07:34 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 13:07:34 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 13:07:34 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:07:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:07:40 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 13:07:40 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 13:07:40 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:07:48 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+ERROR - 2024-02-13 13:07:48 --> mysqli_sql_exception: Incorrect TIMESTAMP value: '2024' in E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 E:\WEB\LARAGON\www\sabilulungan-ci4\app\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+#6 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+#7 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\WEB\LARAGON\www\sabilulungan-ci4\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 E:\WEB\LARAGON\www\sabilulungan-ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\...')
+#10 {main}
+CRITICAL - 2024-02-13 13:07:48 --> Incorrect TIMESTAMP value: '2024'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`, `address`, `maksud_tujuan`
+FROM `proposal`
+WHERE `time_entry` >= :time_entry:
+AND `time_entry` <= :time_entry.1:
+AND `skpd_id` = :skpd_id:
+ORDER BY `id` DESC', [...], false)
+ 2 APPPATH\Controllers\Pdf.php(408): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024', '2024', 'all')
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:08:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:08:14 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:08:14 --> Undefined property: mysqli::$id
+in APPPATH\Controllers\Pdf.php on line 480.
+ 1 APPPATH\Controllers\Pdf.php(480): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$id', 'E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Controllers\\Pdf.php', 480)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:08:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:08:58 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:09:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:09:13 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:09:13 --> Undefined property: mysqli::$id
+in APPPATH\Controllers\Pdf.php on line 480.
+ 1 APPPATH\Controllers\Pdf.php(480): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$id', 'E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Controllers\\Pdf.php', 480)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:09:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:09:57 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:09:57 --> Undefined property: mysqli::$id
+in APPPATH\Controllers\Pdf.php on line 480.
+ 1 APPPATH\Controllers\Pdf.php(480): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$id', 'E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Controllers\\Pdf.php', 480)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:10:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:10:37 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:10:37 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Pdf.php on line 480.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:11:51 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:11:51 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
+in APPPATH\Controllers\Pdf.php on line 477.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:12:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:12:20 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:12:20 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::numRows()
+in APPPATH\Controllers\Pdf.php on line 477.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:13:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:13:03 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:13:04 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::get()
+in APPPATH\Controllers\Pdf.php on line 474.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:13:33 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:13:33 --> Call to a member function numRows() on array
+in APPPATH\Controllers\Pdf.php on line 477.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:14:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:14:26 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+CRITICAL - 2024-02-13 13:14:26 --> Attempt to read property "id" on array
+in APPPATH\Controllers\Pdf.php on line 482.
+ 1 APPPATH\Controllers\Pdf.php(482): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on array', 'E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Controllers\\Pdf.php', 482)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Pdf->generate_dnc('1', '2024-01-01', '2024-12-31', 'all')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pdf))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:14:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:14:36 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:15:44 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:16:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:16:06 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Pdf.php(24): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Pdf->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:50:30 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:50:30 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Main.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Main->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:50:41 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 13:56:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 13:56:36 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:05:29 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:06:53 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:07:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:07:05 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:07:14 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:07:14 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:07:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:07:22 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')
+INFO - 2024-02-13 14:07:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-02-13 14:07:27 --> [DEPRECATED] Optional parameter $p declared before required parameter $num_record is implicitly treated as a required parameter in APPPATH\Models\Ifunction.php on line 206.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\vendor\\codeigniter4\\framework\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\app\\Models\\Ifunction.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Ifunction')
+ 4 APPPATH\Controllers\Auth.php(22): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Ifunction')
+ 5 SYSTEMPATH\CodeIgniter.php(914): App\Controllers\Auth->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\WEB\\LARAGON\\www\\sabilulungan-ci4\\public\\index.php')

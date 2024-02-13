@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 session();
 
@@ -97,6 +99,9 @@ class Auth extends Controller {
                 }
                 if($uname && $pswd && $repswd && $name && $address && $phone && $ktp && $email){
                     if($pswd == $repswd){
+                        $verificationCode = $this->generateVerificationCode(); // Fungsi untuk menghasilkan kode verifikasi
+                        $this->sendVerificationEmail($email, $verificationCode);
+
                         $db = \Config\Database::connect();
                         $db->table('user')->insert([
                             'name' => $name,
@@ -107,7 +112,8 @@ class Auth extends Controller {
                             'username' => $uname,
                             'password' => $this->ifunction->pswd($pswd),
                             'role_id' => 6,
-                            'is_active'=> 0
+                            'is_active'=> 0,
+                            'code'=>$verificationCode
                         ]);
 
                         $dx = $db->insertID();
@@ -153,4 +159,96 @@ class Auth extends Controller {
 	{
 		        return view('content/sandi',['db' => $this->db, 'ifunction' => $this->ifunction]);	
 	}
+    // Fungsi untuk mengirim email verifikasi
+    function sendVerificationEmail($toEmail, $verificationCode) {
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            //             sabilulungan442@gmail.com
+            // Sabilulungan12345
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'sabilulungan442@gmail.com'; // Email pengirim
+            $mail->Password   = 'yourpassword';     // Password email pengirim
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            //Recipients
+            $mail->setFrom('sabilulungan442@gmail.com', 'CS Sabilulungan');
+            $mail->addAddress($toEmail); // Email penerima
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Verifikasi Email';
+            $mail->Body    = 'Kode verifikasi Anda adalah: ' . $verificationCode;
+
+            $mail->send();
+            echo 'Email berhasil dikirim';
+        } catch (Exception $e) {
+            echo "Email gagal dikirim. Pesan error: {$mail->ErrorInfo}";
+        }
+    }
+
+    // Fungsi untuk menghasilkan kode verifikasi
+    function generateVerificationCode() {
+        // Generate kode verifikasi acak, Anda dapat menyesuaikan logika sesuai kebutuhan Anda
+        return substr(md5(uniqid(mt_rand(), true)), 0, 6); // Contoh kode verifikasi 6 karakter
+    }
+    public function confirm(){
+        return view('content/confirm',['db' => $this->db, 'ifunction' => $this->ifunction]);
+    }
+    public function resend(){
+        return view('content/resend',['db' => $this->db, 'ifunction' => $this->ifunction]);
+    }
+    //handel resend_post
+    public function resend_post(){
+        $email = $this->request->getPost('email');
+        $session = \Config\Services::session();
+        //check empty
+        if(empty($email)){
+            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Silahkan lengkapi formulir berikut.']);
+            return redirect()->back();
+        }
+        $db = \Config\Database::connect();
+        $builder = $db->table('user');
+        $builder->select("id, name, role_id, skpd_id, is_active");
+        $builder->where("email", $email);
+        $Qcheck = $builder->get();
+        if($Qcheck->getNumRows()){
+            $check = $Qcheck->getResult();
+            $verificationCode = $this->generateVerificationCode(); // Fungsi untuk menghasilkan kode verifikasi
+            $this->sendVerificationEmail($email, $verificationCode);
+            $db->table('user')->where('email', $email)->update(['code'=>$verificationCode]);
+            return redirect()->to(base_url('confirm'));
+        }else{
+            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Email tidak terdaftar.']);
+            return redirect()->back();
+        }
+    }
+    //handel confirm_post
+    public function confirm_post(){
+        $email = $this->request->getPost('email');
+        $code = $this->request->getPost('code');
+        $session = \Config\Services::session();
+        $db = \Config\Database::connect();
+        //check empty
+        if(empty($email) || empty($code)){
+            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Silahkan lengkapi formulir berikut.']);
+            return redirect()->back();
+        }
+        $builder = $db->table('user');
+        $builder->select("id, name, role_id, skpd_id, is_active");
+        $builder->where("email", $email);
+        $builder->where("code", $code);
+        $Qcheck = $builder->get();
+        if($Qcheck->getNumRows()){
+            $check = $Qcheck->getResult();
+            $db->table('user')->where('email', $email)->update(['is_active'=>1]);
+            return redirect()->to(base_url('login'));
+        }else{
+            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Kode verifikasi salah.']);
+            return redirect()->back();
+        }
+    }
 }
