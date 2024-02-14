@@ -33,6 +33,7 @@ class Auth extends Controller {
             case 'login':
                 $uname = strip_tags($this->request->getPost('uname'));
                 $ifpsd = strip_tags($this->request->getPost('pswd'));
+                // dd($uname, $this->ifunction->pswd($ifpsd));
 
                 if($uname && $ifpsd){
                     $db = \Config\Database::connect();
@@ -58,7 +59,7 @@ class Auth extends Controller {
 
                             return redirect()->to(base_url());
                         }else{
-                            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Akun Anda belum aktif. Silahkan hubungi administrator.']);
+                            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Akun Anda belum aktif. Silahkan lakukan verifikasi email.']);
 
                             return redirect()->back();
                         }
@@ -170,7 +171,7 @@ class Auth extends Controller {
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'sabilulungan442@gmail.com'; // Email pengirim
-            $mail->Password   = 'yourpassword';     // Password email pengirim
+            $mail->Password   = 'dcqe rlba xgky rzbp';     // Password email pengirim
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
@@ -245,6 +246,7 @@ class Auth extends Controller {
         if($Qcheck->getNumRows()){
             $check = $Qcheck->getResult();
             $db->table('user')->where('email', $email)->update(['is_active'=>1]);
+            $session->setFlashdata('notify', ['type' => 'success', 'message' => 'Berhasil verifikasi akun.']);
             return redirect()->to(base_url('login'));
         }else{
             $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Kode verifikasi salah.']);
