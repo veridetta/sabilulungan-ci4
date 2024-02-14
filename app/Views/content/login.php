@@ -26,7 +26,7 @@
                 </div>
                 <div class="control-actions clearfix">
                     <button class="btn-red btn-plain btn" type="submit">Masuk</button>
-                    <a class="btn-black btn-plain btn" href="<?php echo site_url('daftar') ?>">Daftar</a> <a class="btn-black btn-plain btn" href="<?php echo site_url('/confirm') ?>"target="_blank">Konfirmasi Kode</a>
+                    <a class="btn-black btn-plain btn" href="<?php echo site_url('daftar') ?>">Daftar</a>
                 </div>
             </fieldset>
         </form>

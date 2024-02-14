@@ -59,7 +59,7 @@ class Auth extends Controller {
 
                             return redirect()->to(base_url());
                         }else{
-                            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Akun Anda belum aktif. Silahkan lakukan verifikasi email.']);
+                            $session->setFlashdata('notify', ['type' => 'failed', 'message' => 'Akun Anda belum aktif. Silahkan hubungi admin.']);
 
                             return redirect()->back();
                         }

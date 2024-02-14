@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use Exception;
 use Ifunction;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -1432,7 +1433,6 @@ class Process extends Controller {
 						'role_id' => $role, 
 						'is_active' => $status
 					];
-
 					if($skpd) {
 						$data['is_skpd'] = 1;
 						$data['skpd_id'] = $skpd;
@@ -1576,6 +1576,10 @@ class Process extends Controller {
 						'role_id' => 6, 
 						'is_active' => $status
 					]);
+					if($status == 1) {
+						//kirim email
+						$this->sendVerificationEmail($email);
+					}
 
 					$dx = $db->insertID();
 					$db->table('log')->insert(['user_id' => $session->get('sabilulungan')['uid'], 'activity' => 'add_umum', 'id' => $dx, 'ip' => $request->getIPAddress()]);
@@ -1617,6 +1621,10 @@ class Process extends Controller {
 				'username' => $uname, 
 				'is_active' => $status
 			];
+			if($status == 1) {
+				//kirim email
+				$this->sendVerificationEmail($email);
+			}
 
 			if($uname && $name && $address && $phone && $ktp && $email){
 				if($pswd != '' || $repswd != ''){
@@ -2075,4 +2083,34 @@ class Process extends Controller {
 			break;
 		}
 	}
+	// Fungsi untuk mengirim email verifikasi
+    function sendVerificationEmail($toEmail) {
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            //             sabilulungan442@gmail.com
+            // Sabilulungan12345
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'sabilulungan442@gmail.com'; // Email pengirim
+            $mail->Password   = 'dcqe rlba xgky rzbp';     // Password email pengirim
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            //Recipients
+            $mail->setFrom('sabilulungan442@gmail.com', 'CS Sabilulungan');
+            $mail->addAddress($toEmail); // Email penerima
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Akun Baru - Verifikasi Email';
+            $mail->Body    = 'Selamat!! Akun anda telah diverifikasi oleh admin. Sekarang anda dapat login pada website kami.';
+
+            $mail->send();
+            echo 'Email berhasil dikirim';
+        } catch (Exception $e) {
+            echo "Email gagal dikirim. Pesan error: {$mail->ErrorInfo}";
+        }
+    }
 }
